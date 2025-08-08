@@ -1,67 +1,68 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DocumentFilters;
 
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
 
-/**
- *
- * @author wendellgonzalez
- */
-public class ColegiaturaDocumentFilter extends DocumentFilter{
-    private static final int MAX_LENGTH = 11;
-    
+public class ColegiaturaDocumentFilter extends DocumentFilter {
+
+    private static final int MAX_DIGITS = 9;
+
     @Override
-    public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
-        StringBuilder sb = new StringBuilder(string);
-        for (int i = sb.length() - 1; i >= 0; i--) {
-            char ch = sb.charAt(i);
-            if (!isValidChar(ch, fb.getDocument().getLength() + offset + i)) {
-                sb.deleteCharAt(i);
-            }
-        }
-        if (sb.length() > 0) {
-            super.insertString(fb, offset, sb.toString(), attr);
-        }
+    public void insertString(FilterBypass fb, int offset, String string, AttributeSet attr)
+            throws BadLocationException {
+        if (string == null) return;
+        replace(fb, offset, 0, string, attr);
     }
-    
+
     @Override
-    public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
-        if (text == null) {
-            super.replace(fb, offset, length, text, attrs);
-            return;
-        }
+    public void replace(FilterBypass fb, int offset, int length, String text, AttributeSet attrs)
+            throws BadLocationException {
 
-        String currentText = fb.getDocument().getText(0, fb.getDocument().getLength());
-        String newText = currentText.substring(0, offset) + text + currentText.substring(offset + length);
+        if (text == null) return;
 
-        if (newText.length() > MAX_LENGTH) {
-            return;
-        }
+        // Quitar caracteres no numéricos
+        text = text.replaceAll("[^0-9]", "");
 
-        for (int i = 0; i < newText.length(); i++) {
-            if (!isValidChar(newText.charAt(i), i)) {
-                return; // Ignora el reemplazo si el carácter no es válido
-            }
-        }
-        super.replace(fb, offset, length, text, attrs);
+        // Obtener el texto actual sin guiones
+        String currentText = fb.getDocument().getText(0, fb.getDocument().getLength()).replaceAll("-", "");
+
+        // Validar los índices
+        int safeOffset = Math.min(Math.max(0, offset), currentText.length());
+        int safeEnd = Math.min(safeOffset + length, currentText.length());
+
+        // Reemplazar en base segura
+        StringBuilder newRawText = new StringBuilder(currentText);
+        newRawText.replace(safeOffset, safeEnd, text);
+
+        if (newRawText.length() > MAX_DIGITS) return;
+
+        String formattedText = formatWithDashes(newRawText.toString());
+        fb.replace(0, fb.getDocument().getLength(), formattedText, attrs);
     }
-    
+
     @Override
-    public void remove(FilterBypass fb, int offset, int length) throws BadLocationException {
-        super.remove(fb, offset, length);
+    public void remove(FilterBypass fb, int offset, int length)
+            throws BadLocationException {
+
+        String currentText = fb.getDocument().getText(0, fb.getDocument().getLength()).replaceAll("-", "");
+
+        int safeOffset = Math.min(Math.max(0, offset), currentText.length());
+        int safeEnd = Math.min(safeOffset + length, currentText.length());
+
+        StringBuilder sb = new StringBuilder(currentText);
+        sb.delete(safeOffset, safeEnd);
+
+        String formattedText = formatWithDashes(sb.toString());
+        fb.replace(0, fb.getDocument().getLength(), formattedText, null);
     }
 
-    private boolean isValidChar(char ch, int position) {
-        if (position == 2 || position == 5) {
-            return ch == '-';
-        } else {
-            return Character.isDigit(ch);
+    private String formatWithDashes(String raw) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < raw.length(); i++) {
+            if (i == 2 || i == 4) sb.append('-');
+            sb.append(raw.charAt(i));
         }
+        return sb.toString();
     }
-    
 }
