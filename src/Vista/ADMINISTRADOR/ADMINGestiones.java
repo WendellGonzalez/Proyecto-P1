@@ -122,15 +122,9 @@ public class ADMINGestiones extends javax.swing.JFrame {
         jMenu1.setFont(new java.awt.Font("Helvetica Neue", java.awt.Font.BOLD, 15));
 
         JMenuItem itemCerrarSesion = new JMenuItem("Cerrar sesión");
-        JMenuItem itemVolver = new JMenuItem("Volver al módulo anterior");
         JMenuItem itemSalir = new JMenuItem("Salir del sistema");
 
         itemCerrarSesion.addActionListener(e -> {
-            this.dispose();
-            new LoginORSignIn().setVisible(true);
-        });
-
-        itemVolver.addActionListener(e -> {
             this.dispose();
             new LoginORSignIn().setVisible(true);
         });
@@ -143,7 +137,6 @@ public class ADMINGestiones extends javax.swing.JFrame {
         });
 
         jMenu1.add(itemCerrarSesion);
-        jMenu1.add(itemVolver);
         jMenu1.addSeparator();
         jMenu1.add(itemSalir);
 
