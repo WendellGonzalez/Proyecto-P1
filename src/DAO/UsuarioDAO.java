@@ -12,17 +12,22 @@ import java.sql.*;
  */
 public interface UsuarioDAO{
     boolean registrar(Usuario usuario);
-//    public int insertarUsuario();
+    
     public Usuario autenticar(String email, String password);
+    
     List<Usuario> listarUsuario(String filtro);
+    
     boolean actualizar(Usuario u);
+    
     boolean eliminar(int id);
-//    int insertarUsuario(Usuario user); 
+    
     public int contarUsuarios();
+    
     public int contarMedicos();
+    
     public int contarPacientes();
+    
     public int contarPacientesPorMedico(int idMedico);
     
-//    public int insertarUsuario(Connection conn, Usuario user) throws SQLException; 
     public boolean emailExiste(Connection conn, String email) throws SQLException;
 }

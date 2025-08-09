@@ -10,21 +10,13 @@ public class HistorialMedico {
     private String enfermedadesCronicas;
     private List<Medicamento> medicamentosActuales;
     
-    // Información de seguro y contacto de emergencia
     private String seguroMedico;
     private String numeroSeguro;
     private String contactoEmergencia;
     private String relacionContacto;
     private String telefonoContacto;
-    
-    // Los siguientes atributos son innecesarios si ya usas listas para diagnosticos y tratamientos
-//     private String historialMedico;
      private String duracion;
      private String dosis;
-    
-    // Se eliminan los atributos de diagnosticos y tratamientos para simplificar el objeto y seguir el patrón de tu DAO.
-    // private List<String> diagnosticos;
-    // private List<String> tratamientos;
     
     // Constructores
     public HistorialMedico() {

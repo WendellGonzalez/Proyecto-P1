@@ -13,5 +13,6 @@ import java.util.List;
  */
 public interface RecetaDAO {
     List<Receta> obtenerRecetasPorPaciente(int idPaciente);
+    
     List<Receta> obtenerHistorialPorPaciente(int idPaciente);
 }

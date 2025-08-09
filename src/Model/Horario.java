@@ -18,7 +18,6 @@ public class Horario {
     private LocalTime hora_fin;
 
     public Horario() {
-        
     }
     
     public Horario(int idHorario, int idMedico, String dia_semana, LocalTime hora_inicio, LocalTime hora_fin) {
@@ -75,6 +74,4 @@ public class Horario {
     public void setHora_fin(LocalTime hora_fin) {
         this.hora_fin = hora_fin;
     }
-    
-    
 }

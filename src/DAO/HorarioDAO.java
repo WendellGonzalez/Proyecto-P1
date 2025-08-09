@@ -6,8 +6,6 @@ package DAO;
 
 import Model.Horario;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,8 +15,11 @@ import java.util.List;
 public interface HorarioDAO {
     
     boolean insertarHorario(Horario horario);
+    
     List<String> obtenerHorasDisponibles(int idMedico, LocalDate fecha);
+    
     Horario obtenerHorarioPorDia(int idMedico, String diaSemana);
+    
     boolean insertarHorarioDefecto(int idMedico);
     
 }

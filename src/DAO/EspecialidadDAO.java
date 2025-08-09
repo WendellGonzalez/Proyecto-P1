@@ -13,10 +13,13 @@ import java.util.List;
  */
 public interface EspecialidadDAO {
     List<Especialidad> obtenerTodas();
+    
     void insertar(String especialidad, String descripcion);
     
     boolean actualizar(Especialidad especialidad);
+    
     boolean eliminar(int idEspecialidad);
+    
     int contarEspecialidades();
 
     public List<Especialidad> buscarPorNombre(String nombre);

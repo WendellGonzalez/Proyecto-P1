@@ -13,8 +13,13 @@ import java.util.List;
  */
 public interface HistorialMedicoDAO {
     boolean registrar(HistorialMedico historial);
+    
     boolean actualizar(HistorialMedico historial);
+    
     boolean eliminar(int idHistorial);
+    
     HistorialMedico buscarPorPaciente(int idPaciente);
+    
     List<HistorialMedico> listarPorPaciente(int idPaciente);
+    
 }

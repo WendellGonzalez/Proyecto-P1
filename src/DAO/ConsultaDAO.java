@@ -17,5 +17,4 @@ public interface ConsultaDAO {
     ConsultaMedica obtenerConsultaPorCita(int idCita);
     List<ConsultaMedica> obtenerConsultasPorPaciente(int idPaciente);
     List<Receta> obtenerRecetasPorConsulta(int idConsulta);
-//    boolean insertarConsultaConRecetas(ConsultaMedica consulta, List<Receta> recetas);
 }

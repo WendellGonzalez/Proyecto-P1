@@ -13,9 +13,15 @@ import java.util.List;
  */
 public interface PacienteDAO {
     boolean registrar(Paciente paciente);
+    
     boolean actualizar(Paciente paciente);
+    
     boolean eliminar(int idPaciente);
+    
     List<Paciente> listar();
+    
     List<Paciente> listarPorMedico(int idMedico);
+    
     public int obtenderIdPacientePorIdUsuario(int idUsuario);
+    
 }
