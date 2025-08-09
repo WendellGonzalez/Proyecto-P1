@@ -20,9 +20,9 @@ public class Especialidad {
         this.descripcion = descripcion;
     }
     
-    public Especialidad (int text, String text1) {
-        this.idEspecialidad = text;
-        this.nombre = text1;
+    public Especialidad (int idEspecialidad, String nombreEspecialidad) {
+        this.idEspecialidad = idEspecialidad;
+        this.nombre = nombreEspecialidad;
     }
 
     public Especialidad() {

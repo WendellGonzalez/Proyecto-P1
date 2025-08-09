@@ -111,7 +111,8 @@ public class RegistroMedico extends javax.swing.JFrame {
         btnRegistro.setBackground(new java.awt.Color(0, 51, 51));
         btnRegistro.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         btnRegistro.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistro.setText("REGISTRAR");
+        btnRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/sign-in.png"))); // NOI18N
+        btnRegistro.setText(" REGISTRAR");
         btnRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistroActionPerformed(evt);
@@ -121,7 +122,8 @@ public class RegistroMedico extends javax.swing.JFrame {
         btnCancelar.setBackground(new java.awt.Color(0, 51, 51));
         btnCancelar.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setText("CANCELAR");
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cancelar.png"))); // NOI18N
+        btnCancelar.setText(" CANCELAR");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -141,7 +143,7 @@ public class RegistroMedico extends javax.swing.JFrame {
         });
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/logo Background Removed.png"))); // NOI18N
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/logoClinic.png"))); // NOI18N
 
         comboEspecialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -178,9 +180,8 @@ public class RegistroMedico extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))

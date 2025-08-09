@@ -10,7 +10,6 @@ import java.util.List;
  * @author wendellgonzalez
  */
 public class Medico extends Usuario{
-    private String licencia;
     private List<Cita> citas;
     private Especialidad especialidad;
     private String numeroColegiatura;
@@ -26,7 +25,6 @@ public class Medico extends Usuario{
             int idEspecialidad, String estadoSolicitud, int edad) {
         super(idUsuario, nombre, email, password, tipoUsuario, fechaNacimiento, telefono, direccion, cedula, sexo, edad);
         this.especialidad = especialidad;
-        this.licencia = licencia;
         this.citas = citas;
         this.numeroColegiatura = numeroColegiatura;
         this.Universidad = Universidad;
@@ -82,15 +80,7 @@ public class Medico extends Usuario{
     public void setEspecialidad(Especialidad especialidad) {
         this.especialidad = especialidad;
     }
-
-    public String getLicencia() {
-        return licencia;
-    }
-
-    public void setLicencia(String licencia) {
-        this.licencia = licencia;
-    }
-
+    
     public List<Cita> getCitas() {
         return citas;
     }
@@ -129,7 +119,5 @@ public class Medico extends Usuario{
 
     public void setAniosExperiencia(String aniosExperiencia) {
         this.aniosExperiencia = aniosExperiencia;
-    }
-    
-    
+    }  
 }

@@ -143,7 +143,6 @@ public class CitaDAOImpl implements CitaDAO {
                     pacientes.add(paciente);
                 }
             }
-
         } catch (SQLException e) {
             System.err.println("Error al obtener pacientes por médico: " + e.getMessage());
             e.printStackTrace();

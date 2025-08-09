@@ -4,7 +4,6 @@
  */
 package Model;
 import java.time.LocalDate;
-import java.util.List;
 /**
  *
  * @author wendellgonzalez
@@ -13,8 +12,6 @@ public class Paciente extends Usuario{
     
    
     private HistorialMedico historial;
-    private List<Documento> documentos;
-    private List<EvaluacionDoctor> evaluaciones;
     private String seguroMedico;
     private String numeroSeguro;
     private String contactoEmergencia;
@@ -32,23 +29,21 @@ public class Paciente extends Usuario{
     }
     
 
-    // Constructor con parametros
-
-    public Paciente(HistorialMedico historial, List<Documento> documentos, List<EvaluacionDoctor> evaluaciones, String seguroMedico, String numeroSeguro, 
+    // Constructor completo
+    public Paciente(HistorialMedico historial, String seguroMedico, String numeroSeguro, 
             String contactoEmergencia, String relacionContacto, String telefonoContacto, int idUsuario, String nombre, String email, String password, 
             TipoUsuario tipoUsuario, LocalDate fechaNacimiento, String telefono, String direccion, int cedula, sexo sexo, int idMedico, int idPaciente, int edad) {
         
         super(idUsuario, nombre, email, password, tipoUsuario, fechaNacimiento, telefono, direccion, cedula, sexo, edad);
         
         this.historial = historial;
-        this.documentos = documentos;
-        this.evaluaciones = evaluaciones;
         this.seguroMedico = seguroMedico;
         this.numeroSeguro = numeroSeguro;
         this.contactoEmergencia = contactoEmergencia;
         this.relacionContacto = relacionContacto;
         this.telefonoContacto = telefonoContacto;
         this.idMedico = idMedico;
+        this.idUsuario = idPaciente;
     }
 
     //Constructor para GestionPacientes
@@ -111,18 +106,6 @@ public class Paciente extends Usuario{
         this.telefonoContacto = telefonoContacto;
     }
     
-//    
-//    public void solicitarCita(Cita cita) {
-//        // Logica para solicitar cita
-//        System.out.println("Cita solicitada para: " + cita.getfechaHora() + ", Motivo: " + cita.getMotivo());
-//    }
-//    
-//    public void enviarMensaje(String mensaje) {
-//        // Logica para enviar mensaje
-//    }
-    
-    // Getters y setters
-     
     public HistorialMedico getHistorial() {
         return historial;
     }
@@ -131,87 +114,7 @@ public class Paciente extends Usuario{
         this.historial = historial;
     }
 
-    public List<Documento> getDocumentos() {
-        return documentos;
-    }
-
-    public void setDocumentos(List<Documento> documentos) {
-        this.documentos = documentos;
-    }
-
-    public List<EvaluacionDoctor> getEvaluaciones() {
-        return evaluaciones;
-    }
-
-    public void setEvaluaciones(List<EvaluacionDoctor> evaluaciones) {
-        this.evaluaciones = evaluaciones;
-    }
-
-    @Override
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-    @Override
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-    @Override
-    public String getNombre() {
-        return nombre;
-    }
-    @Override
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    
-    @Override
-    public String getEmail() {
-        return email;
-    }
-    @Override
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    @Override
-    public String getPassword() {
-        return password;
-    }
-    @Override
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    @Override
-    public TipoUsuario getTipoUsuario() {
-        return tipoUsuario;
-    }
-
     public void setTipoUsuario() {
         this.tipoUsuario = tipoUsuario.PACIENTE;
-    }
-    @Override
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-    @Override
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-    @Override
-    public String getTelefono() {
-        return telefono;
-    }
-    @Override
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-    @Override
-    public String getDireccion() {
-        return direccion;
-    }
-    @Override
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    
+    } 
 }

@@ -89,11 +89,11 @@ public class Registro extends javax.swing.JFrame {
         ComboTipoUser = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         ComboGenero = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        btnRegistro1 = new javax.swing.JButton();
+        btnSiguiente = new javax.swing.JButton();
         txtTelFormatter = new javax.swing.JFormattedTextField();
         jLabel11 = new javax.swing.JLabel();
         txtEdad = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -141,7 +141,9 @@ public class Registro extends javax.swing.JFrame {
         btnCancelar.setBackground(new java.awt.Color(0, 51, 51));
         btnCancelar.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setText("CANCELAR");
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cancelar.png"))); // NOI18N
+        btnCancelar.setText(" CANCELAR");
+        btnCancelar.setToolTipText("");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -160,15 +162,14 @@ public class Registro extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/logo Background Removed.png"))); // NOI18N
-
-        btnRegistro1.setBackground(new java.awt.Color(0, 51, 51));
-        btnRegistro1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
-        btnRegistro1.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistro1.setText("SIGUIENTE");
-        btnRegistro1.addActionListener(new java.awt.event.ActionListener() {
+        btnSiguiente.setBackground(new java.awt.Color(0, 51, 51));
+        btnSiguiente.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        btnSiguiente.setForeground(new java.awt.Color(255, 255, 255));
+        btnSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/nextIcon.png"))); // NOI18N
+        btnSiguiente.setText(" SIGUIENTE");
+        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistro1ActionPerformed(evt);
+                btnSiguienteActionPerformed(evt);
             }
         });
 
@@ -176,6 +177,9 @@ public class Registro extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
         jLabel11.setText("EDAD:");
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/logoClinic.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -187,7 +191,7 @@ public class Registro extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnRegistro1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(82, 82, 82)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -218,18 +222,19 @@ public class Registro extends javax.swing.JFrame {
                             .addComponent(txtEmail)
                             .addComponent(ComboGenero, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtTelFormatter, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addComponent(txtEdad)))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+                            .addComponent(txtEdad))))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -272,7 +277,7 @@ public class Registro extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRegistro1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(182, Short.MAX_VALUE))
         );
 
@@ -288,7 +293,7 @@ public class Registro extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(jPanel2);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 680));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 700));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -297,7 +302,7 @@ public class Registro extends javax.swing.JFrame {
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/undraw_medicine_hqqg (1).png"))); // NOI18N
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, 680));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 560, 680));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 560, 700));
 
         jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "-", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 13), new java.awt.Color(204, 204, 204))); // NOI18N
 
@@ -344,14 +349,25 @@ public class Registro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDireccionActionPerformed
 
-    private void btnRegistro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistro1ActionPerformed
+    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
         // TODO add your handling code here:
         registrarUsuario();
-    }//GEN-LAST:event_btnRegistro1ActionPerformed
+    }//GEN-LAST:event_btnSiguienteActionPerformed
 
     public void registrarUsuario() {
 
         try {
+            
+            if (txtNombre.getText().isEmpty() 
+                    || txtEdad.getText().isEmpty()
+                    || txtEmail.getText().isEmpty()
+                    || txtDate.getText().isEmpty()
+                    || txtTelFormatter.getText().isEmpty()
+                    || txtDireccion.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor, llenar los campos.");
+                return;
+            }
+            
             String nombre = txtNombre.getText();
             int edad = Integer.parseInt(txtEdad.getText());
             String email = txtEmail.getText();
@@ -372,15 +388,6 @@ public class Registro extends javax.swing.JFrame {
                 return;
             }
 
-            if (txtNombre.getText().isEmpty() 
-                    ||txtEdad.getText().isEmpty()
-                    || txtEmail.getText().isEmpty()
-                    || txtDate.getText().isEmpty()
-                    || txtTelFormatter.getText().isEmpty()
-                    || txtDireccion.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Por favor, llenar los campos.");
-                return;
-            }
             //Validacion de emails
             if (!(email.endsWith("@gmail.com")
                     || email.endsWith("@email.com")
@@ -492,7 +499,7 @@ public class Registro extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboGenero;
     private javax.swing.JComboBox<String> ComboTipoUser;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnRegistro1;
+    private javax.swing.JButton btnSiguiente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
