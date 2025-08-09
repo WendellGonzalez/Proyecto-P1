@@ -544,6 +544,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
     }
 
     private void LimpiarCampos() {
+        txtid.setText("");
         txtNombreCompleto.setText("");
         txtdireccion.setText("");
         txtemail.setText("");

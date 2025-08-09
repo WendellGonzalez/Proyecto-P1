@@ -532,6 +532,7 @@ public class GestionPacientes extends javax.swing.JFrame {
     }
 
     private void LimpiarCampos() {
+        txtid.setText("");
         txtNombrePaciente.setText("");
         txtDireccionPaciente.setText("");
         txtEmailPaciente.setText("");

@@ -559,6 +559,7 @@ public class GestionMedicos extends javax.swing.JFrame {
     }
 
     private void LimpiarCampos() {
+        txtid.setText("");
         txtNombre.setText("");
         txtDireccion.setText("");
         txtEmail.setText("");
