@@ -9,6 +9,7 @@ import Vista.LoginORSignIn;
 import javax.swing.JMenuItem;
 import javax.swing.*;
 import Vista.LOGIN;
+import Vista.InformacionClinica;
 
 /**
  *
@@ -48,6 +49,7 @@ public class PanelPacientes extends javax.swing.JFrame {
         btnVerHistorial = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -150,6 +152,33 @@ public class PanelPacientes extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu2.setText("INFORMACIONES");
+
+        jMenu2.setFont(new java.awt.Font("Helvetica Neue", java.awt.Font.BOLD, 15));
+
+        JMenuItem itemInformacion = new JMenuItem("Acerca de nosotros");
+        JMenuItem itemVisionYMision = new JMenuItem("Vision y Mision");
+        JMenuItem itemContactos = new JMenuItem("Contactanos");
+
+        itemInformacion.addActionListener(e -> {
+            new InformacionClinica().setVisible(true);
+        });
+
+        itemVisionYMision.addActionListener(e -> {
+            new InformacionClinica().setVisible(true);
+        });
+
+        itemContactos.addActionListener(e -> {
+            new InformacionClinica().setVisible(true);
+        });
+
+        jMenu2.add(itemInformacion);
+        jMenu2.add(itemVisionYMision);
+        jMenu2.addSeparator();
+        jMenu2.add(itemContactos);
+
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -203,6 +232,7 @@ public class PanelPacientes extends javax.swing.JFrame {
     private javax.swing.JButton btnVerRecetas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
