@@ -355,11 +355,11 @@ public class AgendarCitasPacientes extends javax.swing.JFrame {
 
             fechaDate.setDate(null);
             comboHoras.removeAllItems();
-//            calendario.setEnabled(true);
 
             fechaDate.setEnabled(true);
-            comboHoras.setEnabled(true);
+            comboHoras.setEnabled(false);
             txtMotivo.setEnabled(true);
+            
         }
     }//GEN-LAST:event_tablaMedicosMouseClicked
 
@@ -367,6 +367,7 @@ public class AgendarCitasPacientes extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         if("date".equals(evt.getPropertyName())) {
+            comboHoras.setEnabled(true);
             cargarHorasDisponibles();
         }
 
@@ -386,7 +387,6 @@ public class AgendarCitasPacientes extends javax.swing.JFrame {
 
         int idMedico = (int) tablaMedicos.getValueAt(fila, 0);
 
-//        Date fechaDate = calendario.getDate();
         Date selectedDate = fechaDate.getDate();
         if (selectedDate == null) {
             JOptionPane.showMessageDialog(this, "Selecciona una fecha.");
@@ -440,7 +440,9 @@ public class AgendarCitasPacientes extends javax.swing.JFrame {
         }
     }
     
+    // metodo para cargar al comboBox de horas disponibles las horas disponubles del medico
     private void cargarHorasDisponibles() {
+       
         Date selectedDate = fechaDate.getDate();
         
         if(medicoSeleccionadoId != -1 && selectedDate != null) {
@@ -491,41 +493,6 @@ public class AgendarCitasPacientes extends javax.swing.JFrame {
 
     }
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(AgendarCitasPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(AgendarCitasPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(AgendarCitasPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(AgendarCitasPacientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-////                new AgendarCitasPacientes().setVisible(true);
-//                new AgendarCitasPacientes(usuarioLogueado).setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRealizarCita;
