@@ -67,7 +67,7 @@ public class InformacionClinica extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/logoClinic.png"))); // NOI18N
 
         jLabel6.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel6.setText("© 2025 CLINICAPP - Todos los derechos reservados");
+        jLabel6.setText("© 2025 ClinicaINNOVA - Todos los derechos reservados");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -118,7 +118,7 @@ public class InformacionClinica extends javax.swing.JFrame {
 
         jMenu1.setText("MENÚ");
 
-        jMenu1.setFont(new java.awt.Font("Helvetica Neue", java.awt.Font.BOLD, 15));
+        jMenu1.setFont(new java.awt.Font("Helvetica Neue", java.awt.Font.BOLD, 13));
         JMenuItem itemSalir = new JMenuItem("Cerrar Ventana");
 
         itemSalir.addActionListener(e -> this.dispose());

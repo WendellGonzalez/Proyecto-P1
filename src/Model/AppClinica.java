@@ -32,9 +32,6 @@ Medico medico;
             System.err.println("Error al establecer el Look and Feel 'Nimbus'");
             e.printStackTrace();
         }
-        // --- FIN DEL CODIGO LOOK AND FEEL ---
-
-        // Iniciar la interfaz gráfica en el hilo de eventos de AWT (EDT)
         SwingUtilities.invokeLater(() -> {
             new LoginORSignIn().setVisible(true);
 

@@ -26,4 +26,6 @@ public interface MedicoDAO {
     
     boolean actualizarEstadoSolicitud(int idMedico, String nuevoEstado);
     
+    List<Medico> obtenerMedicosRechazados();
+    
 }

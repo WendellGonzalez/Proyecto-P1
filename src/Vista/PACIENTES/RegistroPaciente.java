@@ -277,7 +277,7 @@ public class RegistroPaciente extends javax.swing.JFrame {
 
         jMenu1.setText("MENÚ");
 
-        jMenu1.setFont(new java.awt.Font("Helvetica Neue", java.awt.Font.BOLD, 15));
+        jMenu1.setFont(new java.awt.Font("Helvetica Neue", java.awt.Font.BOLD, 13));
 
         JMenuItem itemVolver = new JMenuItem("Volver al módulo anterior");
         JMenuItem itemSalir = new JMenuItem("Salir del sistema");

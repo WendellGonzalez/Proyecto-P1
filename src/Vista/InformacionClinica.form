@@ -18,7 +18,7 @@
             <Property name="text" type="java.lang.String" value="MEN&#xda;"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="jMenu1.setFont(new java.awt.Font(&quot;Helvetica Neue&quot;, java.awt.Font.BOLD, 15));&#xa;JMenuItem itemSalir = new JMenuItem(&quot;Cerrar Ventana&quot;);&#xa;&#xa;itemSalir.addActionListener(e -&gt; this.dispose());&#xa;&#xa;jMenu1.add(itemSalir);"/>
+            <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="jMenu1.setFont(new java.awt.Font(&quot;Helvetica Neue&quot;, java.awt.Font.BOLD, 13));&#xa;JMenuItem itemSalir = new JMenuItem(&quot;Cerrar Ventana&quot;);&#xa;&#xa;itemSalir.addActionListener(e -&gt; this.dispose());&#xa;&#xa;jMenu1.add(itemSalir);"/>
           </AuxValues>
         </Menu>
       </SubComponents>
@@ -179,7 +179,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="66" red="66" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&#xa9; 2025 CLINICAPP - Todos los derechos reservados"/>
+                <Property name="text" type="java.lang.String" value="&#xa9; 2025 ClinicaINNOVA - Todos los derechos reservados"/>
               </Properties>
             </Component>
           </SubComponents>

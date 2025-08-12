@@ -27,16 +27,16 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 
     // SQL REGISTRO DE USUARIO GENERAL
     String REGISTRO_USUARIOS = "INSERT INTO usuarios (nombre, email, password, tipoUsuario, fechaNacimiento, telefono, direccion, sexo, edad)" + "VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
-    
+
     //AUTENTICACION CONSULTAS
     String AUTENTICACION = "SELECT * from Usuarios WHERE email = ? AND Password = ?";
     String OBTENER_MEDICO = "SELECT * FROM medicos WHERE idMedico = ?";
-    
+
     //LISTAR USUARIOS CONSULTAS, CON VALIDACION DE QUE SOLO LOS MEDICOS ACEPTADOS APAREZCAN EN LA GESTION
-    String LISTAR_USUARIOS = "SELECT u.*, m.estado_solicitud FROM usuarios u " +
-        "LEFT JOIN medicos m ON u.idUsuario = m.idMedico " +
-        "WHERE (u.tipoUsuario != 'MEDICO' OR m.estado_solicitud = 'ACEPTADO') " +
-        "AND (u.nombre LIKE ? OR u.email LIKE ?)";
+    String LISTAR_USUARIOS = "SELECT u.*, m.estado_solicitud FROM usuarios u "
+            + "LEFT JOIN medicos m ON u.idUsuario = m.idMedico "
+            + "WHERE (u.tipoUsuario != 'MEDICO' OR m.estado_solicitud = 'ACEPTADO') "
+            + "AND (u.nombre LIKE ? OR u.email LIKE ?)";
 
     //ACTUALIZACIONES
     String UPDATE_USUARIOS = "UPDATE usuarios SET nombre = ?, direccion = ?, email = ?, telefono = ? where idUsuario = ?";
@@ -45,11 +45,20 @@ public class UsuarioDAOimpl implements UsuarioDAO {
     String DELETE_USUARIOS = "DELETE FROM usuarios WHERE idUsuario = ?";
 
     // CONTADORES DE USUARIOS
-    String CONTAR_USUARIOS = "SELECT COUNT(*) FROM usuarios";
-    String CONTAR_MEDICOS = "SELECT COUNT(*) FROM usuarios WHERE tipoUsuario = 'MEDICO';";
+    String CONTAR_USUARIOS = "SELECT COUNT(*) "
+            + "FROM usuarios u "
+            + "LEFT JOIN medicos m "
+            + "    ON m.idMedico = u.idUsuario "
+            + "WHERE m.estado_solicitud != 'RECHAZADO' "
+            + "   OR m.estado_solicitud IS NULL;";
+
+    String CONTAR_MEDICOS = "SELECT COUNT(*) FROM usuarios u "
+            + "Join medicos m on m.idMedico = u.idUsuario "
+            + " WHERE tipoUsuario = 'MEDICO' and estado_solicitud = 'ACEPTADO';";
+    
     String CONTAR_PACIENTES = "SELECT COUNT(*) FROM usuarios WHERE tipoUsuario = 'PACIENTE';";
     String CONTAR_PACIENTESPORMEDICO = "SELECT COUNT(DISTINCT idPaciente) FROM Citas where idMedico = ?";
-    
+
     // EMAIL EXISTE
     String sqlEmailExiste = "SELECT COUNT(*) FROM usuarios WHERE email = ?";
 
@@ -232,7 +241,7 @@ public class UsuarioDAOimpl implements UsuarioDAO {
     @Override
     public boolean actualizar(Usuario u) {
         try (Connection conn = DBconnection.obtenerConexion()) {
-            conn.setAutoCommit(false); 
+            conn.setAutoCommit(false);
 
             try (PreparedStatement stmtUsuarios = conn.prepareStatement(UPDATE_USUARIOS)) {
                 stmtUsuarios.setString(1, u.getNombre());
@@ -355,14 +364,13 @@ public class UsuarioDAOimpl implements UsuarioDAO {
         }
         return false;
     }
-    
+
     public boolean actualizarDatosPersonales(Usuario usuario) {
-        
+
         String ACTUALIZAR_DATOS_PERSONALES = "UPDATE usuarios set nombre = ?, telefono = ?, email = ?, direccion = ?, password = ? where idUsuario = ?";
-        
-        try (Connection conn = DBconnection.obtenerConexion();
-                PreparedStatement stmt = conn.prepareStatement(ACTUALIZAR_DATOS_PERSONALES)) {
-            
+
+        try (Connection conn = DBconnection.obtenerConexion(); PreparedStatement stmt = conn.prepareStatement(ACTUALIZAR_DATOS_PERSONALES)) {
+
             stmt.setString(1, usuario.getNombre());
             stmt.setString(2, usuario.getTelefono());
             stmt.setString(3, usuario.getEmail());
@@ -370,13 +378,13 @@ public class UsuarioDAOimpl implements UsuarioDAO {
             stmt.setString(5, usuario.getPassword());
             stmt.setInt(6, usuario.getIdUsuario());
             stmt.executeUpdate();
-            
+
             return true;
-            
+
         } catch (Exception e) {
             System.err.println("Error al actualizar datos personales: " + e.getMessage());
             return false;
         }
     }
-    
+
 }

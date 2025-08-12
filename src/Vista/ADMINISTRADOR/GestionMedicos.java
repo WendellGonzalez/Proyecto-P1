@@ -70,7 +70,7 @@ public class GestionMedicos extends javax.swing.JFrame {
         jMenuOpciones.add(itemSalir);
 
         //Diseño del menu
-        jMenuOpciones.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
+        jMenuOpciones.setFont(new Font("Helvetica Neue", Font.BOLD, 13));
 
         // Agregar menu al menu par
         jMenuBar1.add(jMenuOpciones);

@@ -50,6 +50,15 @@ public class MedicoDAOImpl implements MedicoDAO {
             + "WHERE m.estado_solicitud = 'ESPERA'";
     
     String ACTUALIZAR_ESTADO_SOLICITUD = "UPDATE Medicos SET estado_solicitud = ? WHERE idMedico = ?";
+    
+    String OBTENER_MEDICOS_RECHAZADOS = "SELECT u.idUsuario, u.nombre, u.edad, u.email, u.password, u.tipoUsuario, "
+            + "u.fechaNacimiento, u.telefono, u.direccion, u.sexo, "
+            + "m.idMedico, m.idEspecialidad, m.numero_colegiatura, m.universidad, "
+            + "m.fecha_graduacion, m.anios_experiencia, m.estado_solicitud, e.nombre  "
+            + "FROM Medicos m "
+            + "INNER JOIN Usuarios u ON m.idMedico = u.idUsuario "
+            + "INNER JOIN Especialidades e ON m.idEspecialidad = e.idEspecialidad "
+            + "WHERE m.estado_solicitud = 'RECHAZADO'";
 
     @Override
     public boolean registrar(Medico medico) {
@@ -223,7 +232,6 @@ public class MedicoDAOImpl implements MedicoDAO {
                 medico.setAniosExperiencia(rs.getString("anios_experiencia"));
                 medico.setEstadoSolicitud(rs.getString("estado_solicitud"));
 
-                // Asumiendo que Medico tiene un objeto Especialidad
                 Especialidad especialidad = new Especialidad();
                 especialidad.setIdEspecialidad(rs.getInt("idEspecialidad"));
                 especialidad.setNombre(rs.getString("nombre"));
@@ -253,6 +261,53 @@ public class MedicoDAOImpl implements MedicoDAO {
             e.printStackTrace();
             return false;
         }
+    }
+    
+    @Override
+    public List<Medico> obtenerMedicosRechazados() {
+        List<Medico> medicosrechazados = new ArrayList<>();
+        try (Connection conn = DBconnection.obtenerConexion(); PreparedStatement stmt = conn.prepareStatement(OBTENER_MEDICOS_RECHAZADOS); ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Medico medico = new Medico();
+                medico.setIdUsuario(rs.getInt("idUsuario"));
+                medico.setNombre(rs.getString("nombre"));
+                medico.setEdad(rs.getInt("edad"));
+                medico.setEmail(rs.getString("email"));
+                medico.setPassword(rs.getString("password"));
+                String tipoUsuariostr = rs.getString("tipoUsuario");
+
+                if (tipoUsuariostr != null) {
+                    medico.setTipoUsuario(Usuario.TipoUsuario.valueOf(tipoUsuariostr.toUpperCase()));
+                }
+
+                medico.setFechaNacimiento(rs.getDate("fechaNacimiento") != null ? rs.getDate("fechaNacimiento").toLocalDate() : null);
+                medico.setTelefono(rs.getString("telefono"));
+                medico.setDireccion(rs.getString("direccion"));
+                String sexoStr = rs.getString("sexo");
+                if (sexoStr != null) {
+                    medico.setSexo(Usuario.sexo.valueOf(sexoStr.toUpperCase()));
+                }
+
+                medico.setIdMedico(rs.getInt("idMedico"));
+                medico.setNumeroColegiatura(rs.getString("numero_colegiatura"));
+                medico.setUniversidad(rs.getString("universidad"));
+                medico.setFechaGraduacion(rs.getDate("fecha_graduacion") != null ? rs.getDate("fecha_graduacion").toLocalDate() : null);
+                medico.setAniosExperiencia(rs.getString("anios_experiencia"));
+                medico.setEstadoSolicitud(rs.getString("estado_solicitud"));
+
+                Especialidad especialidad = new Especialidad();
+                especialidad.setIdEspecialidad(rs.getInt("idEspecialidad"));
+                especialidad.setNombre(rs.getString("nombre"));
+                medico.setEspecialidad(especialidad);
+
+                medicosrechazados.add(medico);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return medicosrechazados;
     }
 
 }

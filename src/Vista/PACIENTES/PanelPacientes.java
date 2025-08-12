@@ -122,7 +122,7 @@ public class PanelPacientes extends javax.swing.JFrame {
 
         jMenu1.setText("MENÚ");
 
-        jMenu1.setFont(new java.awt.Font("Helvetica Neue", java.awt.Font.BOLD, 15));
+        jMenu1.setFont(new java.awt.Font("Helvetica Neue", java.awt.Font.BOLD, 13));
 
         JMenuItem itemCerrarSesion = new JMenuItem("Cerrar sesión");
         JMenuItem itemVolver = new JMenuItem("Volver al módulo anterior");
@@ -160,7 +160,7 @@ public class PanelPacientes extends javax.swing.JFrame {
 
         jMenu2.setText("INFORMACIONES");
 
-        jMenu2.setFont(new java.awt.Font("Helvetica Neue", java.awt.Font.BOLD, 15));
+        jMenu2.setFont(new java.awt.Font("Helvetica Neue", java.awt.Font.BOLD, 13));
 
         JMenuItem itemInformacion = new JMenuItem("Acerca de nosotros");
         JMenuItem itemVisionYMision = new JMenuItem("Vision y Mision");

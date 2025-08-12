@@ -297,10 +297,8 @@ public class GestionPacientes extends javax.swing.JFrame {
             }
         });
 
-        //Diseño del menu
-        jMenu1.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
+        jMenu1.setFont(new Font("Helvetica Neue", Font.BOLD, 13));
 
-        // Agregar menu al menu par
         jMenuBar1.add(jMenu1);
 
         jMenuBar1.add(jMenu1);

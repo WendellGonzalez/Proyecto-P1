@@ -67,6 +67,11 @@ public class GestionCitasMedico extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "ACTUALIZACION DE ESTADO", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 24), new java.awt.Color(0, 102, 102))); // NOI18N
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel1MouseClicked(evt);
+            }
+        });
 
         btnAceptar.setBackground(new java.awt.Color(0, 51, 51));
         btnAceptar.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
@@ -184,7 +189,7 @@ public class GestionCitasMedico extends javax.swing.JFrame {
 
         jMenu1.setText("MENÚ");
 
-        jMenu1.setFont(new java.awt.Font("Helvetica Neue", java.awt.Font.BOLD, 15));
+        jMenu1.setFont(new java.awt.Font("Helvetica Neue", java.awt.Font.BOLD, 13));
 
         JMenuItem itemCerrarSesion = new JMenuItem("Cerrar sesión");
         JMenuItem itemVolver = new JMenuItem("Volver al módulo anterior");
@@ -252,8 +257,10 @@ public class GestionCitasMedico extends javax.swing.JFrame {
             
             if(citaSeleccionada.getEstado().equals(Cita.Estado.ACEPTADA)) {
                 btnIniciarConsulta.setEnabled(true);
+                btnAceptar.setEnabled(false);
             } else {
                 btnIniciarConsulta.setEnabled(false);
+                btnAceptar.setEnabled(true);
             }
             
         }
@@ -274,6 +281,14 @@ public class GestionCitasMedico extends javax.swing.JFrame {
         // TODO add your handling code here:
         iniciarConsulta();
     }//GEN-LAST:event_btnIniciarConsultaActionPerformed
+
+    private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
+        // TODO add your handling code here:
+        
+        habilitarBotones(true);
+        btnIniciarConsulta.setEnabled(false);
+        limpiarCampos();
+    }//GEN-LAST:event_jPanel1MouseClicked
 
     // Metodo para aceptar Citas
     private void aceptarCita() {
@@ -372,6 +387,16 @@ public class GestionCitasMedico extends javax.swing.JFrame {
             System.err.println("Error al ocultar columna ID: " + e.getMessage());
         }
 
+    }
+    
+    private void habilitarBotones(boolean estado) {
+        btnAceptar.setEnabled(estado);
+        btnRechazar.setEnabled(estado);
+        btnIniciarConsulta.setEnabled(estado);
+    }
+    
+    private void limpiarCampos() {
+        txtMotivoCita.setText("");
     }
 
 

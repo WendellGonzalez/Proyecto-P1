@@ -38,10 +38,6 @@ public class GestionUsuarios extends javax.swing.JFrame {
         setTitle("ADMINISTRADOR: " + administrador.getNombre());
         contadorDeUsuarios();
 
-//        String ids[] = {"Nombre Completo", "Tipo de Usuario", "Direccion", "Email", "Telefono"};
-//        mt.setColumnIdentifiers(ids);
-//        tablaUsuarios.setModel(mt);
-
         cargarTabla("");
 
         activiarBotonesEdicion(false);
@@ -60,7 +56,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
         jMenuOpciones.addSeparator();
         jMenuOpciones.add(itemSalir);
 
-        jMenuOpciones.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
+        jMenuOpciones.setFont(new Font("Helvetica Neue", Font.BOLD, 13));
 
         // Agregar menu al menu par
         jMenuBar1.add(jMenuOpciones);

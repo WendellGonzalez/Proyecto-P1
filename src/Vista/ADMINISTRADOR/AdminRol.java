@@ -120,7 +120,7 @@ public class AdminRol extends javax.swing.JFrame {
 
         jMenu1.setText("MENÚ");
 
-        jMenu1.setFont(new java.awt.Font("Helvetica Neue", java.awt.Font.BOLD, 15));
+        jMenu1.setFont(new java.awt.Font("Helvetica Neue", java.awt.Font.BOLD, 13));
 
         JMenuItem itemCerrarSesion = new JMenuItem("Cerrar sesión");
         JMenuItem itemVolver = new JMenuItem("Volver al módulo anterior");

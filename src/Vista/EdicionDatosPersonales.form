@@ -18,7 +18,7 @@
             <Property name="text" type="java.lang.String" value="MEN&#xda;"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="jMenu1.setFont(new java.awt.Font(&quot;Helvetica Neue&quot;, java.awt.Font.BOLD, 15));&#xa;JMenuItem itemCerrarVentana = new JMenuItem(&quot;Cerrar Ventana&quot;);&#xa;&#xa;itemCerrarVentana.addActionListener(e -&gt; {&#xa;this.dispose();&#xa;});&#xa;&#xa;jMenu1.add(itemCerrarVentana);"/>
+            <AuxValue name="JavaCodeGenerator_LayoutCodePost" type="java.lang.String" value="jMenu1.setFont(new java.awt.Font(&quot;Helvetica Neue&quot;, java.awt.Font.BOLD, 13));&#xa;JMenuItem itemCerrarVentana = new JMenuItem(&quot;Cerrar Ventana&quot;);&#xa;&#xa;itemCerrarVentana.addActionListener(e -&gt; {&#xa;this.dispose();&#xa;});&#xa;&#xa;jMenu1.add(itemCerrarVentana);"/>
           </AuxValues>
         </Menu>
       </SubComponents>
@@ -87,23 +87,21 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="txtTelFormatter" pref="462" max="32767" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtNombre" max="32767" attributes="0"/>
-                              <Component id="jLabel6" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="btnActualizar" min="-2" pref="213" max="-2" attributes="0"/>
-                                  <EmptySpace pref="37" max="32767" attributes="0"/>
-                                  <Component id="btncancelar" min="-2" pref="212" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" pref="178" max="-2" attributes="0"/>
-                              <Component id="jLabel5" min="-2" pref="178" max="-2" attributes="0"/>
-                              <Component id="txtCorreoElectronico" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtNuevaContrasena" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtConfirmarContrasena" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtDIRECCION" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtNombre" max="32767" attributes="0"/>
+                          <Component id="jLabel6" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="btnActualizar" min="-2" pref="213" max="-2" attributes="0"/>
+                              <EmptySpace pref="37" max="32767" attributes="0"/>
+                              <Component id="btncancelar" min="-2" pref="212" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" pref="178" max="-2" attributes="0"/>
+                          <Component id="jLabel5" min="-2" pref="178" max="-2" attributes="0"/>
+                          <Component id="txtCorreoElectronico" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtNuevaContrasena" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtConfirmarContrasena" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtDIRECCION" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="62" max="32767" attributes="0"/>
                   </Group>

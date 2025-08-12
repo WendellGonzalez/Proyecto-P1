@@ -2,40 +2,37 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Vista.PACIENTES;
+package Vista.ADMINISTRADOR;
 
-import DAO.RecetaDAO;
-import DAOImpl.RecetaDAOImpl;
-import Model.Paciente;
-import Model.Receta;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.*;
-//import javax.swing.JMenuItem;
+import DAO.MedicoDAO;
+import DAOImpl.MedicoDAOImpl;
+import Model.Administrador;
+import Model.Medico;
 import Vista.LoginORSignIn;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author wendellgonzalez
  */
-public class RecetasPacientes extends javax.swing.JFrame {
+public class SolicitudesMedicasRechazadas extends javax.swing.JFrame {
 
-    private Paciente pacienteLogueado;
+    private List<Medico> MedicosRechazados;
+    private Administrador administrador;
     
     /**
-     * Creates new form RecetasPacientes
+     * Creates new form SolicitudesMedicasRechazadas
      */
-    public RecetasPacientes(Paciente pacienteLogueado) {
-        this.pacienteLogueado = pacienteLogueado;
+    public SolicitudesMedicasRechazadas(Administrador admin) {
+        this.administrador = admin;
         initComponents();
-        setResizable(false);
         setLocationRelativeTo(null);
-        setTitle("PACIENTE: " + pacienteLogueado.getNombre());
-        
-        cargarTabla();
+        setResizable(false);
+        cargarMedicosRechazadosEnTabla();
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,16 +45,16 @@ public class RecetasPacientes extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaRecetas = new javax.swing.JTable();
+        tablaMedicosRechazados = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MIS RECETAS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 24), new java.awt.Color(0, 102, 102))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "SOLICITUDES MEDICAS RECHAZADAS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 24), new java.awt.Color(0, 102, 102))); // NOI18N
 
-        tablaRecetas.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMedicosRechazados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -68,40 +65,39 @@ public class RecetasPacientes extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tablaRecetas);
+        jScrollPane1.setViewportView(tablaMedicosRechazados);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1002, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1399, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE))
         );
 
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "-", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 2, 13), new java.awt.Color(204, 204, 204))); // NOI18N
-        jMenuBar1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "-", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 13), new java.awt.Color(204, 204, 204))); // NOI18N
 
         jMenu1.setText("MENÚ");
 
         jMenu1.setFont(new java.awt.Font("Helvetica Neue", java.awt.Font.BOLD, 13));
 
+        JMenuItem itemCerrarSesion = new JMenuItem("Cerrar sesión");
         JMenuItem itemVolver = new JMenuItem("Volver al módulo anterior");
         JMenuItem itemSalir = new JMenuItem("Salir del sistema");
-        JMenuItem itemCerrarSesion = new JMenuItem("Cerrar sesion");
-
-        itemVolver.addActionListener(e -> {
-            this.dispose();
-            new PanelPacientes(this.pacienteLogueado).setVisible(true);
-        });
 
         itemCerrarSesion.addActionListener(e -> {
             this.dispose();
             new LoginORSignIn().setVisible(true);
+        });
+
+        itemVolver.addActionListener(e -> {
+            this.dispose();
+            new ADMINGestiones(this.administrador).setVisible(true);
         });
 
         itemSalir.addActionListener(e -> {
@@ -134,52 +130,40 @@ public class RecetasPacientes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    private void cargarTabla() {
-        RecetaDAO recetaDAO = new RecetaDAOImpl();
-        DefaultTableModel modelo = new DefaultTableModel() {
+    private void cargarMedicosRechazadosEnTabla() {
+        MedicoDAO medicoDAO = new MedicoDAOImpl();
+        MedicosRechazados = medicoDAO.obtenerMedicosRechazados();
+        DefaultTableModel modelo = new DefaultTableModel(new Object[] {
+        "ID", "NOMBRE", "EDAD", "TELEFONO", "EMAIL", "ESPECIALIDAD", "NUMERO DE COLEGIATURA", "FECHA GRADUACION", "AÑOS EXPERIENCIA", "ESTADO"
+        }, 0 ) {
             @Override
             public boolean isCellEditable(int row, int column) {
-
                 return false;
             }
         };
-                        modelo.setRowCount(0);
-
-        String[] nombresColumnas = {"MÉDICO", "ESPECIALIDAD", "FECHA", "MEDICAMENTO", "DOSIS", "FRECUENCIA", "DURACIÓN"};
-        modelo.setColumnIdentifiers(nombresColumnas);
-
-        // Obtener la lista de recetas del paciente logueado
-        List<Receta> recetas = recetaDAO.obtenerRecetasPorPaciente(this.pacienteLogueado.getidPaciente());
-
-        if (recetas != null && !recetas.isEmpty()) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            
-            for (Receta receta : recetas) {
-                Object[] fila = {
-                    receta.getNombreMedico(),
-                    receta.getEspecialidad(),
-                    receta.getFechaConsulta().format(formatter),
-                    receta.getMedicamento(),
-                    receta.getDosis(),
-                    receta.getFrecuencia(),
-                    receta.getDuracion()
-                };
-                modelo.addRow(fila);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontraron recetas para este paciente.", "Información", JOptionPane.INFORMATION_MESSAGE);
+        
+        for(Medico medico : MedicosRechazados) {
+            modelo.addRow(new Object[] {
+                medico.getIdMedico(),
+                medico.getNombre(),
+                medico.getEdad(),
+                medico.getTelefono(),
+                medico.getEmail(),
+                medico.getEspecialidad() != null ? medico.getEspecialidad().getNombre() : "N/A",
+                medico.getNumeroColegiatura(), 
+                medico.getFechaGraduacion(),
+                medico.getAniosExperiencia(),
+                medico.getEstadoSolicitud()
+            });
         }
-
-        tablaRecetas.setModel(modelo);
+        tablaMedicosRechazados.setModel(modelo);
     }
     
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaRecetas;
+    private javax.swing.JTable tablaMedicosRechazados;
     // End of variables declaration//GEN-END:variables
 }

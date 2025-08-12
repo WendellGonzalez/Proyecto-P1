@@ -37,6 +37,7 @@ public class GestionEspecialidades extends javax.swing.JFrame {
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
+
         modelo = (DefaultTableModel) tablaEspecialidades.getModel();
         cargarEspecialidadesEnTabla(especialidadDAO.obtenerTodas());
         contadorDeEspecialidades();
@@ -273,7 +274,7 @@ public class GestionEspecialidades extends javax.swing.JFrame {
 
         jMenu1.setText("MENÚ");
 
-        jMenu1.setFont(new java.awt.Font("Helvetica Neue", java.awt.Font.BOLD, 15));
+        jMenu1.setFont(new java.awt.Font("Helvetica Neue", java.awt.Font.BOLD, 13));
 
         JMenuItem itemVolver = new JMenuItem("Volver al módulo anterior");
         JMenuItem itemSalir = new JMenuItem("Salir del sistema");
@@ -360,6 +361,8 @@ public class GestionEspecialidades extends javax.swing.JFrame {
         btnEditar.setEnabled(true);
         btnEliminar.setEnabled(true);
         habilitarCampos(false);
+        
+        
 
     }//GEN-LAST:event_tablaEspecialidadesMouseClicked
 
@@ -386,8 +389,6 @@ public class GestionEspecialidades extends javax.swing.JFrame {
         limpiarCampos();
     }//GEN-LAST:event_jPanel8MouseClicked
 
-    
-    
     // Metodo agregar Especialidad
     private void agregarEspecialidad() {
         String nombre = txtNombreEspecialidad.getText().trim();
@@ -399,15 +400,15 @@ public class GestionEspecialidades extends javax.swing.JFrame {
         }
 
         EspecialidadDAO dao = new EspecialidadDAOImpl();
-        dao.insertar(nombre, descripcion);  // Este método debe aceptar ambos parámetros
+        dao.insertar(nombre, descripcion);
 
         JOptionPane.showMessageDialog(this, "Especialidad registrada correctamente.");
         txtTotalEspecialidades.setText(String.valueOf(especialidadDAO.contarEspecialidades()));
 
         cargarEspecialidadesEnTabla(dao.obtenerTodas());
-        limpiarCampos(); 
+        limpiarCampos();
     }
-    
+
     // Metodo actualizar Especialidad
     private void actualizarEspecialidad() {
         if (txtNombreEspecialidad.getText().trim().isEmpty() || txtDescripcion.getText().trim().isEmpty()) {
@@ -485,9 +486,13 @@ public class GestionEspecialidades extends javax.swing.JFrame {
         listaEspecialidad = lista;
 
         for (Especialidad esp : lista) {
-            modelo.addRow(new Object[]{esp.getIdEspecialidad(), esp.getNombre(), esp.getDescripcion()});
+            modelo.addRow(new Object[]{
+                esp.getIdEspecialidad(),
+                esp.getNombre(),
+                esp.getDescripcion()});
         }
     }
+    
 
     private void filtrarEspecialidades(String texto) {
         EspecialidadDAO dao = new EspecialidadDAOImpl();
