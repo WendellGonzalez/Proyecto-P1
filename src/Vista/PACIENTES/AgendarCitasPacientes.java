@@ -37,9 +37,6 @@ public class AgendarCitasPacientes extends javax.swing.JFrame {
     private int medicoSeleccionadoId = -1;
     private HorarioDAO horarioDAO = new HorarioDAOImpl();
     private Paciente pacienteLogueado;
-    
-    
-
     private List<Especialidad> especialidades;
 
     public AgendarCitasPacientes(Paciente paciente) {
@@ -78,6 +75,8 @@ public class AgendarCitasPacientes extends javax.swing.JFrame {
                 model.setRowCount(0);
             }
         });
+        
+        fechaDate.setMinSelectableDate(new Date());
         
         fechaDate.setEnabled(false);
         comboHoras.setEnabled(false);

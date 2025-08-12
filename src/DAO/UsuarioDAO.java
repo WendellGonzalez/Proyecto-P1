@@ -30,4 +30,7 @@ public interface UsuarioDAO{
     public int contarPacientesPorMedico(int idMedico);
     
     public boolean emailExiste(Connection conn, String email) throws SQLException;
+    
+    boolean actualizarDatosPersonales(Usuario usuario);
+    
 }

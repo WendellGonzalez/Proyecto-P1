@@ -239,7 +239,7 @@ public class GestionSolicitudesMedicas extends javax.swing.JFrame {
     private void cargarSolicitudes() {
         medicosEnEspera = medicoDAO.obtenerMedicosEnEspera();
         DefaultTableModel modelo = new DefaultTableModel(new Object[] {
-        "ID", "NOMBRE", "EDAD", "EMAIL", "ESPECIALIDAD", "NUMERO DE COLEGIATURA", "FECHA GRADUACION", "AÑOS EXPERIENCIA", "ESTADO"
+        "ID", "NOMBRE", "EDAD", "TELEFONO", "EMAIL", "ESPECIALIDAD", "NUMERO DE COLEGIATURA", "FECHA GRADUACION", "AÑOS EXPERIENCIA", "ESTADO"
         }, 0 ) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -252,6 +252,7 @@ public class GestionSolicitudesMedicas extends javax.swing.JFrame {
                 medico.getIdMedico(),
                 medico.getNombre(),
                 medico.getEdad(),
+                medico.getTelefono(),
                 medico.getEmail(),
                 medico.getEspecialidad() != null ? medico.getEspecialidad().getNombre() : "N/A",
                 medico.getNumeroColegiatura(), 

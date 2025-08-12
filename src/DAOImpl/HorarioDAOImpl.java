@@ -6,7 +6,6 @@ package DAOImpl;
 
 import DAO.CitaDAO;
 import DAO.HorarioDAO;
-import DAOImpl.CitaDAOImpl;
 import Model.Cita;
 import Model.Horario;
 import java.sql.*;
@@ -82,7 +81,6 @@ public class HorarioDAOImpl implements HorarioDAO {
 
             final LocalTime horaIteracion = horaActual;
 
-            // Verificar si la hora actual no coincide con ninguna cita reservada
             boolean estaReservada = citasReservadas.stream()
                     .anyMatch(cita -> cita.getHora().equals(horaIteracion));
 

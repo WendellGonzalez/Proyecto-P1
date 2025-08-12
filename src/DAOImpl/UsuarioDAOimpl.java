@@ -234,7 +234,6 @@ public class UsuarioDAOimpl implements UsuarioDAO {
         try (Connection conn = DBconnection.obtenerConexion()) {
             conn.setAutoCommit(false); 
 
-            // Actualizamos la tabla general
             try (PreparedStatement stmtUsuarios = conn.prepareStatement(UPDATE_USUARIOS)) {
                 stmtUsuarios.setString(1, u.getNombre());
                 stmtUsuarios.setString(2, u.getDireccion());
@@ -356,4 +355,28 @@ public class UsuarioDAOimpl implements UsuarioDAO {
         }
         return false;
     }
+    
+    public boolean actualizarDatosPersonales(Usuario usuario) {
+        
+        String ACTUALIZAR_DATOS_PERSONALES = "UPDATE usuarios set nombre = ?, telefono = ?, email = ?, direccion = ?, password = ? where idUsuario = ?";
+        
+        try (Connection conn = DBconnection.obtenerConexion();
+                PreparedStatement stmt = conn.prepareStatement(ACTUALIZAR_DATOS_PERSONALES)) {
+            
+            stmt.setString(1, usuario.getNombre());
+            stmt.setString(2, usuario.getTelefono());
+            stmt.setString(3, usuario.getEmail());
+            stmt.setString(4, usuario.getDireccion());
+            stmt.setString(5, usuario.getPassword());
+            stmt.setInt(6, usuario.getIdUsuario());
+            stmt.executeUpdate();
+            
+            return true;
+            
+        } catch (Exception e) {
+            System.err.println("Error al actualizar datos personales: " + e.getMessage());
+            return false;
+        }
+    }
+    
 }

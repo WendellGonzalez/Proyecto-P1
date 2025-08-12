@@ -8,6 +8,7 @@ import Vista.LoginORSignIn;
 import javax.swing.JMenuItem;
 import javax.swing.*;
 import Model.Administrador;
+import Vista.EdicionDatosPersonales;
 
 /**
  *
@@ -124,6 +125,7 @@ public class AdminRol extends javax.swing.JFrame {
         JMenuItem itemCerrarSesion = new JMenuItem("Cerrar sesión");
         JMenuItem itemVolver = new JMenuItem("Volver al módulo anterior");
         JMenuItem itemSalir = new JMenuItem("Salir del sistema");
+        JMenuItem itemUpdateDatosPersonales = new JMenuItem("Editar Datos Personales");
 
         itemCerrarSesion.addActionListener(e -> {
             this.dispose();
@@ -142,8 +144,13 @@ public class AdminRol extends javax.swing.JFrame {
             }
         });
 
+        itemUpdateDatosPersonales.addActionListener(e -> {
+            new EdicionDatosPersonales(this.administrador).setVisible(true);
+        });
+
         jMenu1.add(itemCerrarSesion);
         jMenu1.add(itemVolver);
+        jMenu1.add(itemUpdateDatosPersonales);
         jMenu1.addSeparator();
         jMenu1.add(itemSalir);
 

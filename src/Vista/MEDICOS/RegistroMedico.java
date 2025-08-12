@@ -8,7 +8,6 @@ import DAO.EspecialidadDAO;
 import DAOImpl.EspecialidadDAOImpl;
 import DAO.MedicoDAO;
 import DAOImpl.MedicoDAOImpl;
-import DocumentFilters.ColegiaturaDocumentFilter;
 import Model.Especialidad;
 import javax.swing.*;
 import java.time.format.DateTimeFormatter;
@@ -39,7 +38,6 @@ public class RegistroMedico extends javax.swing.JFrame {
         setTitle("Dr(a) " + medico.getNombre());
         this.medico = medico;
         ((AbstractDocument) txtFechaGraduacion.getDocument()).setDocumentFilter(new FechaDocumentFilter());
-        ((AbstractDocument) txtNumeroColegiatura.getDocument()).setDocumentFilter(new ColegiaturaDocumentFilter());
 
         cargarEspecialidadesEnCombo();
     }
@@ -180,8 +178,9 @@ public class RegistroMedico extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(42, 42, 42)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboEspecialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -201,11 +200,11 @@ public class RegistroMedico extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAniosExperiencia, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(67, 67, 67))
+                .addGap(38, 38, 38))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));

@@ -37,10 +37,6 @@ public class GestionPacientes extends javax.swing.JFrame {
         setTitle("ADMINISTRADOR: " + administrador.getNombre());
         contarPacientes();
 
-        String ids[] = {"Nombre Completo","Edad", "Tipo de Usuario", "Direccion", "Email", "Telefono"};
-        mt.setColumnIdentifiers(ids);
-        jTabledatos.setModel(mt);
-
         cargarTabla("");
 
         activiarBotonesEdicion(false);

@@ -38,9 +38,9 @@ public class GestionUsuarios extends javax.swing.JFrame {
         setTitle("ADMINISTRADOR: " + administrador.getNombre());
         contadorDeUsuarios();
 
-        String ids[] = {"Nombre Completo", "Tipo de Usuario", "Direccion", "Email", "Telefono"};
-        mt.setColumnIdentifiers(ids);
-        tablaUsuarios.setModel(mt);
+//        String ids[] = {"Nombre Completo", "Tipo de Usuario", "Direccion", "Email", "Telefono"};
+//        mt.setColumnIdentifiers(ids);
+//        tablaUsuarios.setModel(mt);
 
         cargarTabla("");
 
@@ -50,26 +50,23 @@ public class GestionUsuarios extends javax.swing.JFrame {
         jMenuBar1.remove(jMenu1);
         jMenuBar1.remove(jMenu2);
 
-        // Crear los elementos del menu
         jMenuOpciones = new javax.swing.JMenu("MENÚ");
         itemCerrarSesion = new javax.swing.JMenuItem("Cerrar sesión");
         itemVolver = new javax.swing.JMenuItem("Volver al módulo anterior");
         itemSalir = new javax.swing.JMenuItem("Salir del sistema");
 
-        // Agregarlos al menu
         jMenuOpciones.add(itemCerrarSesion);
         jMenuOpciones.add(itemVolver);
         jMenuOpciones.addSeparator();
         jMenuOpciones.add(itemSalir);
 
-        //Diseño del menu
         jMenuOpciones.setFont(new Font("Helvetica Neue", Font.BOLD, 15));
 
         // Agregar menu al menu par
         jMenuBar1.add(jMenuOpciones);
         setJMenuBar(jMenuBar1);
 
-        //Acciones del menu bar
+        //Acciones del menu
         itemCerrarSesion.addActionListener(e -> {
             this.dispose();
             new LOGIN().setVisible(true);
