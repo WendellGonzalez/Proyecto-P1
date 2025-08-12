@@ -8,13 +8,13 @@ import DAO.UsuarioDAO;
 import DAOImpl.UsuarioDAOimpl;
 import Model.Usuario;
 import Model.UsuarioGeneral;
+import java.awt.Color;
 import java.text.ParseException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import javax.swing.JMenuItem;
-import javax.swing.*;
 
 /**
  *
@@ -34,6 +34,14 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
         setResizable(false);
         setTitle(usuario.getNombre());
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        
+    txtNombre.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, Color.black));
+    txtTelFormatter.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, Color.black));
+    txtCorreoElectronico.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, Color.black));
+    txtDIRECCION.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, Color.black));
+    txtNuevaContrasena.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, Color.black));
+    txtConfirmarContrasena.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, Color.black));
+        
     }
 
     /**
@@ -83,6 +91,7 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jLabel5.setText("CORREO ELECTRONICO:");
 
+        btncancelar.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         btncancelar.setText("CANCELAR");
         btncancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,6 +99,7 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
             }
         });
 
+        btnActualizar.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
         btnActualizar.setText("ACTUALIZAR");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
