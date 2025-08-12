@@ -82,26 +82,34 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtTelFormatter" pref="462" max="32767" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNombre" max="32767" attributes="0"/>
-                          <Component id="jLabel6" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="btnActualizar" min="-2" pref="213" max="-2" attributes="0"/>
-                              <EmptySpace pref="37" max="32767" attributes="0"/>
-                              <Component id="btncancelar" min="-2" pref="212" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtTelFormatter" pref="462" max="32767" attributes="0"/>
+                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtNombre" max="32767" attributes="0"/>
+                                  <Component id="jLabel6" alignment="0" min="-2" pref="178" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="btnActualizar" min="-2" pref="213" max="-2" attributes="0"/>
+                                      <EmptySpace pref="37" max="32767" attributes="0"/>
+                                      <Component id="btncancelar" min="-2" pref="212" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" min="-2" pref="178" max="-2" attributes="0"/>
+                                  <Component id="jLabel5" min="-2" pref="178" max="-2" attributes="0"/>
+                                  <Component id="txtCorreoElectronico" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtNuevaContrasena" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtConfirmarContrasena" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtDIRECCION" alignment="0" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" pref="178" max="-2" attributes="0"/>
-                          <Component id="jLabel5" min="-2" pref="178" max="-2" attributes="0"/>
-                          <Component id="txtCorreoElectronico" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtNuevaContrasena" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtConfirmarContrasena" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtDIRECCION" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
+                              <Component id="jLabel7" min="-2" pref="148" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace pref="62" max="32767" attributes="0"/>
                   </Group>
@@ -110,7 +118,9 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jLabel7" min="-2" pref="142" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="jLabel1" min="-2" pref="25" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtNombre" min="-2" pref="80" max="-2" attributes="0"/>
@@ -229,6 +239,14 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="try {&#xa;&#xa;MaskFormatter mf = new MaskFormatter(&quot;(###) ### - ####&quot;);&#xa;mf.setPlaceholderCharacter(&apos;_&apos;);&#xa;txtTelFormatter.setFormatterFactory(new DefaultFormatterFactory(mf));&#xa;&#xa;} catch (ParseException ex) {&#xa;System.out.println(ex);&#xa;}"/>
               </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel7">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/IMGS/userIcon.png"/>
+                </Property>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
