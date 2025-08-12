@@ -229,6 +229,16 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
     }//GEN-LAST:event_btncancelarActionPerformed
 
     private void actualizarDatosPersonales() {
+        
+        if(txtNombre.getText().isEmpty() ||
+        txtConfirmarContrasena.getText().isEmpty() ||
+        txtCorreoElectronico.getText().isEmpty() || 
+        txtDIRECCION.getText().isEmpty() ||
+        txtNuevaContrasena.getText().isEmpty() ||
+        txtTelFormatter.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe llenar los campos vacios");
+            return;
+        }
 
         String nuevaContrasena = String.valueOf(txtNuevaContrasena.getPassword());
         String confirmarContrasena = String.valueOf(txtConfirmarContrasena.getPassword());
