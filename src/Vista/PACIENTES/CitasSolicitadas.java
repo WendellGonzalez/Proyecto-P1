@@ -4,34 +4,31 @@
  */
 package Vista.PACIENTES;
 
-import DAO.RecetaDAO;
-import DAOImpl.RecetaDAOImpl;
+import DAO.CitaDAO;
+import DAOImpl.CitaDAOImpl;
+import Model.Cita;
 import Model.Paciente;
-import Model.Receta;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.*;
 import Vista.LoginORSignIn;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author wendellgonzalez
  */
-public class RecetasPacientes extends javax.swing.JFrame {
+public class CitasSolicitadas extends javax.swing.JFrame {
 
     private Paciente pacienteLogueado;
-
+    
     /**
-     * Creates new form RecetasPacientes
+     * Creates new form CitasSolicitadas
      */
-    public RecetasPacientes(Paciente pacienteLogueado) {
-        this.pacienteLogueado = pacienteLogueado;
+    public CitasSolicitadas(Paciente paciente) {
+        this.pacienteLogueado = paciente;
         initComponents();
-        setResizable(false);
         setLocationRelativeTo(null);
-        setTitle("PACIENTE: " + pacienteLogueado.getNombre());
-
+        setResizable(false);
         cargarTabla();
     }
 
@@ -46,16 +43,16 @@ public class RecetasPacientes extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaRecetas = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MIS RECETAS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 24), new java.awt.Color(0, 102, 102))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MIS CITAS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 24), new java.awt.Color(0, 102, 102))); // NOI18N
 
-        tablaRecetas.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -66,19 +63,17 @@ public class RecetasPacientes extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tablaRecetas);
+        jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1002, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
         );
 
         jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "-", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 2, 13), new java.awt.Color(204, 204, 204))); // NOI18N
@@ -133,7 +128,7 @@ public class RecetasPacientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cargarTabla() {
-        RecetaDAO recetaDAO = new RecetaDAOImpl();
+        CitaDAO citaDAO = new CitaDAOImpl();
         DefaultTableModel modelo = new DefaultTableModel() {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -142,33 +137,22 @@ public class RecetasPacientes extends javax.swing.JFrame {
             }
         };
         modelo.setRowCount(0);
+        
+            modelo.setColumnIdentifiers(new String[]{
+        "MEDICO", "FECHA", "HORA", "MOTIVO", "ESTADO"
+    });
 
-        String[] nombresColumnas = {"MÉDICO", "ESPECIALIDAD", "FECHA", "MEDICAMENTO", "DOSIS", "FRECUENCIA", "DURACIÓN"};
-        modelo.setColumnIdentifiers(nombresColumnas);
+    for (Cita cita : citaDAO.obtenerCitasPorPaciente(this.pacienteLogueado.getidPaciente())) {
+        modelo.addRow(new Object[]{
+            cita.getMedico().getNombre(),
+            cita.getFecha(),
+            cita.getHora(),
+            cita.getMotivo(),
+            cita.getEstado()
+        });
+    }
 
-        // Obtener la lista de recetas del paciente logueado
-        List<Receta> recetas = recetaDAO.obtenerRecetasPorPaciente(this.pacienteLogueado.getidPaciente());
-
-        if (recetas != null && !recetas.isEmpty()) {
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-            for (Receta receta : recetas) {
-                Object[] fila = {
-                    receta.getNombreMedico(),
-                    receta.getEspecialidad(),
-                    receta.getFechaConsulta().format(formatter),
-                    receta.getMedicamento(),
-                    receta.getDosis(),
-                    receta.getFrecuencia(),
-                    receta.getDuracion()
-                };
-                modelo.addRow(fila);
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "No se encontraron recetas para este paciente.", "Información", JOptionPane.INFORMATION_MESSAGE);
-        }
-
-        tablaRecetas.setModel(modelo);
+    jTable1.setModel(modelo);
     }
 
 
@@ -177,6 +161,6 @@ public class RecetasPacientes extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaRecetas;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

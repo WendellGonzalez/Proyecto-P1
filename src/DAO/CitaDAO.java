@@ -23,5 +23,5 @@ public interface CitaDAO {
 
     List<Cita> obtenerCitasPendientesPorMedico(int idMedico);
     boolean actualizarEstadoCita(int idCita, String nuevoEstado);
-    
+    List<Cita> obtenerCitasPorPaciente(int idPaciente);
 }

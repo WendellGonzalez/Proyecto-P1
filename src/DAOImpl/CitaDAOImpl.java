@@ -6,6 +6,7 @@ package DAOImpl;
 
 import DAO.CitaDAO;
 import Model.Cita;
+import Model.Medico;
 import Model.Paciente;
 import Model.Usuario;
 import java.time.LocalDate;
@@ -23,32 +24,41 @@ public class CitaDAOImpl implements CitaDAO {
 
     /**
      * CONSULTAS
+     *
      * @param idMedico
      * @param fecha
-     * @return 
+     * @return
      */
-    
     // Consulta para obtener citas por medico y fecha
     String OBTENER_CITAS_POR_MEDICO_Y_FECHA = "SELECT * FROM citas WHERE idMedico = ? AND fecha = ?";
-    
+
     // Registrar Citas
     String REGISTRAR_CITA = "INSERT INTO citas(idPaciente, idMedico, fecha, hora, motivo, estado)"
-                + "VALUES (?,?,?,?,?,?)";
-    
+            + "VALUES (?,?,?,?,?,?)";
+
     // Obtener pacientes por medico
     String OBTENER_PACIENTES_POR_MEDICO = "SELECT DISTINCT U.idUsuario, U.nombre, U.tipoUsuario, U.direccion, U.email, U.telefono "
             + "FROM Citas C "
             + "JOIN Usuarios U ON C.idPaciente = U.idUsuario "
             + "WHERE C.idMedico = ?";
-    
+
     String OBTENER_CITAS_PENDIENTES_POR_MEDICO = "SELECT c.idCita, c.fecha, c.hora, c.motivo, c.estado, "
             + "u.idUsuario, u.nombre, u.edad, u.email, u.telefono "
             + "FROM Citas c JOIN Usuarios u ON c.idPaciente = u.idUsuario "
             + "WHERE c.idMedico = ? AND c.estado in ('PENDIENTE', 'ACEPTADA') order by fecha asc, hora asc";
-    
+
     // Actualizar estado de la cita
     String ACTUALIZAR_ESTADO_CITA = "UPDATE citas Set estado = ? where idCita = ?";
-    
+
+    //Obtener citas por paciente
+    String OBTENER_CITAS_POR_PACIENTE
+            = "SELECT c.idCita, m.idMedico, u.idUsuario, u.nombre, u.telefono, "
+            + "c.fecha, c.hora, c.motivo, c.estado "
+            + "FROM citas c "
+            + "JOIN medicos m on c.idMedico = m.idMedico "
+            + "JOIN usuarios u on m.idMedico = u.idUsuario "
+            + "WHERE c.idPaciente = ?";
+
     @Override
     public List<Cita> obtenerCitasPorMedicoYFecha(int idMedico, LocalDate fecha) {
         List<Cita> citas = new ArrayList<>();
@@ -198,5 +208,42 @@ public class CitaDAOImpl implements CitaDAO {
             return false;
         }
     }
+
+    public List<Cita> obtenerCitasPorPaciente(int idPaciente) {
+
+        List<Cita> citas = new ArrayList<>();
+
+        try (Connection conn = DBconnection.obtenerConexion(); PreparedStatement stmt = conn.prepareStatement(OBTENER_CITAS_POR_PACIENTE)) {
+
+            stmt.setInt(1, idPaciente);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Cita cita = new Cita();
+                    cita.setIdCita(rs.getInt("idCita"));
+                    cita.setIdMedico(rs.getInt("idMedico"));
+                    cita.setFecha(rs.getDate("fecha").toLocalDate());
+                    cita.setHora(rs.getTime("hora").toLocalTime());
+                    cita.setMotivo(rs.getString("motivo"));
+                    cita.setEstado(Cita.Estado.valueOf(rs.getString("estado")));
+
+                    Medico medico = new Medico();
+                    medico.setIdUsuario(rs.getInt("idUsuario"));
+                    medico.setNombre(rs.getString("nombre"));
+                    medico.setTelefono(rs.getString("telefono"));
+
+                    cita.setMedico(medico);
+
+                    citas.add(cita);
+                }
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error al obtener citas por paciente");
+            ex.printStackTrace();
+        }
+
+        return citas;
+    }
+
 }
-    
