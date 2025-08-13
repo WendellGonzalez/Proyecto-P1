@@ -302,7 +302,6 @@ public class GestionConsultas extends javax.swing.JFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
         agregarReceta();
-        limpiarCampos();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnVerHistorialMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerHistorialMedicoActionPerformed
