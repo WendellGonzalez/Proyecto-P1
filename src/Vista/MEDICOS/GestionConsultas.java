@@ -302,6 +302,7 @@ public class GestionConsultas extends javax.swing.JFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         // TODO add your handling code here:
         agregarReceta();
+        limpiarCampos();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnVerHistorialMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerHistorialMedicoActionPerformed
@@ -373,6 +374,16 @@ public class GestionConsultas extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Error al guardar la consulta.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+    
+    private void limpiarCampos() {
+        txtMedicamento.setText("");
+        txtDiagnostico.setText("");
+        txtDosis.setText("");
+        txtDuracion.setText("");
+        txtFrecuencia.setText("");
+        txtRecomendaciones.setText("");
+        txtDiagnostico.requestFocus();
     }
 
 
