@@ -36,12 +36,16 @@ public class UsuarioGeneral extends Usuario {
         this.telefono = telefono;
     }
 
-    public UsuarioGeneral(String Nombre, String telefono, String email, String direccion, String password, int idUsuario) {
+    public UsuarioGeneral(String Nombre, String telefono, String email, String direccion, int idUsuario) {
         this.idUsuario = idUsuario;
         this.nombre = Nombre;
         this.telefono = telefono;
         this.email = email;
         this.direccion = direccion;
-        this.password = password;
+    }
+
+    public UsuarioGeneral(String nuevaContrasena, int idUsuario) {
+        this.idUsuario = idUsuario;
+        this.password = nuevaContrasena;
     }
 }

@@ -368,7 +368,7 @@ public class UsuarioDAOimpl implements UsuarioDAO {
     @Override
     public boolean actualizarDatosPersonales(Usuario usuario) {
 
-        String ACTUALIZAR_DATOS_PERSONALES = "UPDATE usuarios set nombre = ?, telefono = ?, email = ?, direccion = ?, password = ? where idUsuario = ?";
+        String ACTUALIZAR_DATOS_PERSONALES = "UPDATE usuarios set nombre = ?, telefono = ?, email = ?, direccion = ? where idUsuario = ?";
 
         try (Connection conn = DBconnection.obtenerConexion(); PreparedStatement stmt = conn.prepareStatement(ACTUALIZAR_DATOS_PERSONALES)) {
 
@@ -376,14 +376,33 @@ public class UsuarioDAOimpl implements UsuarioDAO {
             stmt.setString(2, usuario.getTelefono());
             stmt.setString(3, usuario.getEmail());
             stmt.setString(4, usuario.getDireccion());
-            stmt.setString(5, usuario.getPassword());
-            stmt.setInt(6, usuario.getIdUsuario());
+//            stmt.setString(5, usuario.getPassword());
+            stmt.setInt(5, usuario.getIdUsuario());
             stmt.executeUpdate();
 
             return true;
 
         } catch (Exception e) {
             System.err.println("Error al actualizar datos personales: " + e.getMessage());
+            return false;
+        }
+    }
+    
+    @Override
+    public boolean actualizarContrasena(Usuario usuario) {
+
+        String ACTUALIZAR_CONTRASENA = "UPDATE usuarios set password = ? where idUsuario = ?";
+
+        try (Connection conn = DBconnection.obtenerConexion(); PreparedStatement stmt = conn.prepareStatement(ACTUALIZAR_CONTRASENA)) {
+
+            stmt.setString(1, usuario.getPassword());
+            stmt.setInt(2, usuario.getIdUsuario());
+            stmt.executeUpdate();
+
+            return true;
+
+        } catch (Exception e) {
+            System.err.println("Error al actualizar contraseña: " + e.getMessage());
             return false;
         }
     }

@@ -14,7 +14,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
-import javax.swing.JMenuItem;
 
 /**
  *
@@ -42,10 +41,8 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
         txtTelFormatter.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, Color.black));
         txtCorreoElectronico.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, Color.black));
         txtDIRECCION.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, Color.black));
-        txtNuevaContrasena.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, Color.black));
-        txtConfirmarContrasena.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, Color.black));
-
-        seePasswords();
+        
+        activarBotones(false);
 
     }
 
@@ -61,10 +58,6 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        txtNuevaContrasena = new javax.swing.JPasswordField();
-        txtConfirmarContrasena = new javax.swing.JPasswordField();
         jLabel5 = new javax.swing.JLabel();
         txtCorreoElectronico = new javax.swing.JTextField();
         btncancelar = new javax.swing.JButton();
@@ -79,8 +72,7 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
         btnEditarTelefono = new javax.swing.JButton();
         btnCorreo = new javax.swing.JButton();
         btnDireccion = new javax.swing.JButton();
-        lblVerContrasena2 = new javax.swing.JLabel();
-        lblVerContrasena1 = new javax.swing.JLabel();
+        btnCambiarContrasena = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
 
@@ -98,12 +90,6 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jLabel1.setText("NOMBRE DE USUARIO:");
-
-        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        jLabel3.setText("NUEVA CONTRASEÑA:");
-
-        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
-        jLabel4.setText("CONFIRMAR CONTRASEÑA:");
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         jLabel5.setText("CORREO ELECTRONICO:");
@@ -161,64 +147,61 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
             }
         });
 
-        lblVerContrasena2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblVerContrasena2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/eye-clossed.png"))); // NOI18N
-
-        lblVerContrasena1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblVerContrasena1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/eye-clossed.png"))); // NOI18N
+        btnCambiarContrasena.setBackground(new java.awt.Color(204, 51, 0));
+        btnCambiarContrasena.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        btnCambiarContrasena.setForeground(new java.awt.Color(255, 255, 255));
+        btnCambiarContrasena.setText("CAMBIAR CONTRASEÑA");
+        btnCambiarContrasena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambiarContrasenaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(62, 62, 62)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(72, 72, 72)
+                            .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtDIRECCION, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtNombre)
+                                    .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+                                    .addComponent(txtTelFormatter))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(btnEditarTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                                            .addComponent(btnEditarNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addGap(61, 61, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtNombre)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEditarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
-                            .addComponent(txtTelFormatter))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(btnEditarTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(btnCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtDIRECCION, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37)
-                                .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 35, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtConfirmarContrasena, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
-                            .addComponent(txtNuevaContrasena, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblVerContrasena1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblVerContrasena2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(27, 27, 27))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(213, 213, 213)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(231, 231, 231))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnCambiarContrasena)
+                        .addGap(212, 212, 212))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,35 +226,19 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCorreoElectronico, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 29, Short.MAX_VALUE)
+                .addGap(18, 40, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDIRECCION, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 19, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtNuevaContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(lblVerContrasena1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(28, 28, 28)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtConfirmarContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblVerContrasena2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(83, 83, 83)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(btnCambiarContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btncancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(94, 94, 94))
+                .addGap(48, 48, 48))
         );
 
         try {
@@ -318,7 +285,7 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 596, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 621, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -335,42 +302,46 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
         actualizarDatosPersonales();
-        limpiarCampos();
         cargarTextFields();
+        activarBotones(true);
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
         // TODO add your handling code here:
         habilitarCampos(false);
-        limpiarCampos();
         cargarTextFields();
+        activarBotones(true);
     }//GEN-LAST:event_btncancelarActionPerformed
 
     private void btnEditarNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarNombreActionPerformed
         // TODO add your handling code here:
         txtNombre.setEditable(true);
+        activarBotones(true);
     }//GEN-LAST:event_btnEditarNombreActionPerformed
 
     private void btnEditarTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarTelefonoActionPerformed
         // TODO add your handling code here:
         txtTelFormatter.setEditable(true);
+        activarBotones(true);
     }//GEN-LAST:event_btnEditarTelefonoActionPerformed
 
     private void btnCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCorreoActionPerformed
         // TODO add your handling code here:
         txtCorreoElectronico.setEditable(true);
+        activarBotones(true);
     }//GEN-LAST:event_btnCorreoActionPerformed
 
     private void btnDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDireccionActionPerformed
         // TODO add your handling code here:
         txtDIRECCION.setEditable(true);
+        activarBotones(true);
     }//GEN-LAST:event_btnDireccionActionPerformed
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
         // TODO add your handling code here:
-        limpiarCampos();
         habilitarCampos(false);
         cargarTextFields();
+        activarBotones(false);
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
@@ -378,61 +349,23 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jLabel8MouseClicked
 
-    private void seePasswords() {
-        lblVerContrasena1.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                txtNuevaContrasena.setEchoChar((char) 0);
-                lblVerContrasena1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/eyeOpenned.png")));
-            }
+    private void btnCambiarContrasenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarContrasenaActionPerformed
+        // TODO add your handling code here:
+        new CambiarContrasena(this.usuarioLogueado).setVisible(true);
+    }//GEN-LAST:event_btnCambiarContrasenaActionPerformed
 
-            @Override
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                txtNuevaContrasena.setEchoChar('*');
-                lblVerContrasena1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/eye-clossed.png")));
-            }
-        });
-
-        lblVerContrasena2.addMouseListener(new java.awt.event.MouseAdapter() {
-            @Override
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                txtConfirmarContrasena.setEchoChar((char) 0);
-                lblVerContrasena2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/eyeOpenned.png")));
-            }
-
-            @Override
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                txtConfirmarContrasena.setEchoChar('*');
-                lblVerContrasena2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/eye-clossed.png")));
-            }
-        });
-    }
 
     private void actualizarDatosPersonales() {
 
         if (txtNombre.getText().isEmpty()
-                || txtConfirmarContrasena.getText().isEmpty()
                 || txtCorreoElectronico.getText().isEmpty()
                 || txtDIRECCION.getText().isEmpty()
-                || txtNuevaContrasena.getText().isEmpty()
                 || txtTelFormatter.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe llenar los campos vacios");
             return;
         }
 
-        String nuevaContrasena = String.valueOf(txtNuevaContrasena.getPassword());
-        String confirmarContrasena = String.valueOf(txtConfirmarContrasena.getPassword());
         String email = txtCorreoElectronico.getText();
-
-        if (!nuevaContrasena.equals(confirmarContrasena)) {
-            JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        if (nuevaContrasena.length() < 8) {
-            JOptionPane.showMessageDialog(this, "La contraseña debe tener al menos 8 caracteres", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
 
         if (!(email.endsWith("@gmail.com")
                 || email.endsWith("@email.com")
@@ -448,7 +381,6 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
                 txtTelFormatter.getText(),
                 txtCorreoElectronico.getText(),
                 txtDIRECCION.getText(),
-                nuevaContrasena,
                 usuarioLogueado.getIdUsuario()
         );
 
@@ -461,6 +393,11 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
 
     }
 
+    private void activarBotones(boolean estado) {
+        btnActualizar.setEnabled(estado);
+        btncancelar.setEnabled(estado);
+    }
+    
     private void cargarTextFields() {
         txtNombre.setText(String.valueOf(this.usuarioLogueado.getNombre()));
         txtTelFormatter.setText(String.valueOf(this.usuarioLogueado.getTelefono()));
@@ -475,18 +412,9 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
         txtDIRECCION.setEditable(estado);
     }
 
-    private void limpiarCampos() {
-//        txtNombre.setText("");
-//        txtCorreoElectronico.setText("");
-//        txtDIRECCION.setText("");
-//        txtTelFormatter.setText("");
-        txtConfirmarContrasena.setText("");
-        txtNuevaContrasena.setText("");
-        txtNombre.requestFocus();
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnCambiarContrasena;
     private javax.swing.JButton btnCorreo;
     private javax.swing.JButton btnDireccion;
     private javax.swing.JButton btnEditarNombre;
@@ -494,8 +422,6 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
     private javax.swing.JButton btncancelar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -503,13 +429,9 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblVerContrasena1;
-    private javax.swing.JLabel lblVerContrasena2;
-    private javax.swing.JPasswordField txtConfirmarContrasena;
     private javax.swing.JTextField txtCorreoElectronico;
     private javax.swing.JTextField txtDIRECCION;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JPasswordField txtNuevaContrasena;
     private javax.swing.JFormattedTextField txtTelFormatter;
     // End of variables declaration//GEN-END:variables
 }

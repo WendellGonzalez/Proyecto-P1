@@ -33,4 +33,6 @@ public interface UsuarioDAO{
     
     boolean actualizarDatosPersonales(Usuario usuario);
     
+    boolean actualizarContrasena(Usuario usuario);
+    
 }
