@@ -365,6 +365,7 @@ public class UsuarioDAOimpl implements UsuarioDAO {
         return false;
     }
 
+    @Override
     public boolean actualizarDatosPersonales(Usuario usuario) {
 
         String ACTUALIZAR_DATOS_PERSONALES = "UPDATE usuarios set nombre = ?, telefono = ?, email = ?, direccion = ?, password = ? where idUsuario = ?";
