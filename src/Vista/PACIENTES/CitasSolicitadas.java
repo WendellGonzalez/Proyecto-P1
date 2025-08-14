@@ -69,11 +69,11 @@ public class CitasSolicitadas extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
         );
 
         jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "-", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 2, 13), new java.awt.Color(204, 204, 204))); // NOI18N
@@ -139,12 +139,13 @@ public class CitasSolicitadas extends javax.swing.JFrame {
         modelo.setRowCount(0);
         
             modelo.setColumnIdentifiers(new String[]{
-        "MEDICO", "FECHA", "HORA", "MOTIVO", "ESTADO"
+        "MEDICO", "TELEFONO", "FECHA", "HORA", "MOTIVO", "ESTADO"
     });
 
     for (Cita cita : citaDAO.obtenerCitasPorPaciente(this.pacienteLogueado.getidPaciente())) {
         modelo.addRow(new Object[]{
             cita.getMedico().getNombre(),
+            cita.getMedico().getTelefono(),
             cita.getFecha(),
             cita.getHora(),
             cita.getMotivo(),

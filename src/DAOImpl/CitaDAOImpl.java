@@ -209,6 +209,7 @@ public class CitaDAOImpl implements CitaDAO {
         }
     }
 
+    @Override
     public List<Cita> obtenerCitasPorPaciente(int idPaciente) {
 
         List<Cita> citas = new ArrayList<>();
