@@ -42,6 +42,12 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
         txtCorreoElectronico.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, Color.black));
         txtDIRECCION.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, Color.black));
         
+        txtNombre.setForeground(Color.gray);
+        txtTelFormatter.setForeground(Color.gray);
+        txtCorreoElectronico.setForeground(Color.gray);
+        txtDIRECCION.setForeground(Color.gray);
+        
+        
         activarBotones(false);
 
     }
@@ -317,24 +323,28 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
         // TODO add your handling code here:
         txtNombre.setEditable(true);
         activarBotones(true);
+        txtNombre.setForeground(Color.black);
     }//GEN-LAST:event_btnEditarNombreActionPerformed
 
     private void btnEditarTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarTelefonoActionPerformed
         // TODO add your handling code here:
         txtTelFormatter.setEditable(true);
         activarBotones(true);
+        txtTelFormatter.setForeground(Color.black);
     }//GEN-LAST:event_btnEditarTelefonoActionPerformed
 
     private void btnCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCorreoActionPerformed
         // TODO add your handling code here:
         txtCorreoElectronico.setEditable(true);
         activarBotones(true);
+        txtCorreoElectronico.setForeground(Color.black);
     }//GEN-LAST:event_btnCorreoActionPerformed
 
     private void btnDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDireccionActionPerformed
         // TODO add your handling code here:
         txtDIRECCION.setEditable(true);
         activarBotones(true);
+        txtDIRECCION.setForeground(Color.black);
     }//GEN-LAST:event_btnDireccionActionPerformed
 
     private void jPanel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseClicked
@@ -342,6 +352,10 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
         habilitarCampos(false);
         cargarTextFields();
         activarBotones(false);
+        txtNombre.setForeground(Color.gray);
+        txtTelFormatter.setForeground(Color.gray);
+        txtCorreoElectronico.setForeground(Color.gray);
+        txtDIRECCION.setForeground(Color.gray);
     }//GEN-LAST:event_jPanel1MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
