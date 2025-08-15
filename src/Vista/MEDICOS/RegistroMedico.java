@@ -107,8 +107,8 @@ public class RegistroMedico extends javax.swing.JFrame {
         btnRegistro.setBackground(new java.awt.Color(0, 51, 51));
         btnRegistro.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         btnRegistro.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/sign-in.png"))); // NOI18N
-        btnRegistro.setText(" REGISTRAR");
+        btnRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/send.png"))); // NOI18N
+        btnRegistro.setText(" ENVIAR SOLICITUD");
         btnRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistroActionPerformed(evt);
