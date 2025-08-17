@@ -28,7 +28,7 @@ public class PanelPacientes extends javax.swing.JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         this.pacienteLogueado = paciente;
-        setTitle("NOMBRE DEL PACIENTE: " + pacienteLogueado.getNombre());
+        setTitle("PACIENTE: " + pacienteLogueado.getNombre());
         
     }
    

@@ -21,7 +21,7 @@ public class PacienteDAOImpl implements PacienteDAO {
 
     String REGISTRO_PACIENTE = "INSERT INTO pacientes (idPaciente, idMedico, seguro_medico, numero_seguro, contacto_emergencia, relacion_contacto, telefono_contacto) VALUES (?, ?, ?, ?, ?, ?, ?)";
     String REGISTRO_HISTORIAL_PACIENTE = "INSERT INTO historialMedico (idPaciente, tipo_sangre, alergias, enfermedades_cronicas) VALUES (?,?,?,?)";
-    String REGISTRO_MEDICAMENTOS_PACIENTE = "INSERT INTO medicamentos (idHistorial, nombre) VALUES (?,?)";
+//    String REGISTRO_MEDICAMENTOS_PACIENTE = "INSERT INTO medicamentos (idHistorial, nombre) VALUES (?,?)";
 
     String PACIENTES_POR_MEDICO = "SELECT * FROM pacientes WHERE idMedico = ?";
 
@@ -40,7 +40,9 @@ public class PacienteDAOImpl implements PacienteDAO {
     @Override
     public boolean registrar(Paciente paciente) {
 
-        try (Connection conn = DBconnection.obtenerConexion(); PreparedStatement stmtPaciente = conn.prepareStatement(REGISTRO_PACIENTE, Statement.RETURN_GENERATED_KEYS); PreparedStatement stmtHistorial = conn.prepareStatement(REGISTRO_HISTORIAL_PACIENTE, Statement.RETURN_GENERATED_KEYS); PreparedStatement stmtMedicamento = conn.prepareStatement(REGISTRO_MEDICAMENTOS_PACIENTE, Statement.RETURN_GENERATED_KEYS)) {
+        try (Connection conn = DBconnection.obtenerConexion(); 
+                PreparedStatement stmtPaciente = conn.prepareStatement(REGISTRO_PACIENTE, Statement.RETURN_GENERATED_KEYS); 
+                PreparedStatement stmtHistorial = conn.prepareStatement(REGISTRO_HISTORIAL_PACIENTE, Statement.RETURN_GENERATED_KEYS)) {
 
             conn.setAutoCommit(false);
 
@@ -83,23 +85,6 @@ public class PacienteDAOImpl implements PacienteDAO {
                     throw new SQLException("No se inserto historial medico.");
                 }
 
-                try (ResultSet keysHistorial = stmtHistorial.getGeneratedKeys()) {
-                    if (keysHistorial.next()) {
-                        int idHistorial = keysHistorial.getInt(1);
-
-                        List<Medicamento> medicamentos = h.getMedicamentosActuales();
-                        if (medicamentos != null && !medicamentos.isEmpty()) {
-                            for (Medicamento m : h.getMedicamentosActuales()) {
-                                stmtMedicamento.setInt(1, idHistorial);
-                                stmtMedicamento.setString(2, esVacio(m.getNombre()) ? null : m.getNombre());
-                                stmtMedicamento.addBatch();
-                            }
-                            stmtMedicamento.executeBatch();
-                        }
-                    } else {
-                        throw new SQLException("No se obtuvo ID de historial médico.");
-                    }
-                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }

@@ -30,6 +30,7 @@ public class CitasSolicitadas extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         cargarTabla();
+        setTitle("PACIENTE: " + paciente.getNombre());
     }
 
     /**

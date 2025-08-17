@@ -64,7 +64,6 @@ public class GestionHistorialPacientes extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         txtTipoSangre = new javax.swing.JTextField();
         txtAlergias = new javax.swing.JTextField();
-        txtMedicamentos = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
@@ -80,7 +79,7 @@ public class GestionHistorialPacientes extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "GESTION HISTORIAL MEDICO DE PACIENTES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 18))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "PACIENTES", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 18))); // NOI18N
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "INGRESE LA SIGUIENTE INFORMACION", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 0, 18), new java.awt.Color(255, 255, 255))); // NOI18N
@@ -89,8 +88,6 @@ public class GestionHistorialPacientes extends javax.swing.JFrame {
 
         txtAlergias.setToolTipText("");
         txtAlergias.setBorder(javax.swing.BorderFactory.createTitledBorder("ALERGIAS"));
-
-        txtMedicamentos.setBorder(javax.swing.BorderFactory.createTitledBorder("MEDICAMENTOS"));
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMGS/cancel.png"))); // NOI18N
         btnCancelar.setText("CANCELAR");
@@ -126,13 +123,12 @@ public class GestionHistorialPacientes extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtTipoSangre, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEnfermedadesCronicas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtAlergias, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                            .addComponent(txtMedicamentos)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(txtTipoSangre, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(23, 23, 23)
+                                .addComponent(txtAlergias, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtEnfermedadesCronicas)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -143,7 +139,7 @@ public class GestionHistorialPacientes extends javax.swing.JFrame {
                                 .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 80, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -154,16 +150,14 @@ public class GestionHistorialPacientes extends javax.swing.JFrame {
                     .addComponent(txtTipoSangre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAlergias, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtEnfermedadesCronicas, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(txtMedicamentos))
+                .addComponent(txtEnfermedadesCronicas, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(0, 51, 51));
@@ -358,23 +352,6 @@ public class GestionHistorialPacientes extends javax.swing.JFrame {
                 txtAlergias.setText(historial.getAlergias());
                 txtEnfermedadesCronicas.setText(historial.getEnfermedadesCronicas());
 
-                List<Medicamento> medicamentos = historial.getMedicamentosActuales();
-                if (medicamentos != null && !medicamentos.isEmpty()) {
-                    StringBuilder nombresMedicamentos = new StringBuilder();
-
-                    for (Medicamento m : medicamentos) {
-                        nombresMedicamentos.append(m.getNombre()).append(", ");
-                    }
-
-                    if (nombresMedicamentos.length() > 0) {
-                        nombresMedicamentos.setLength(nombresMedicamentos.length() - 2);
-                    }
-
-                    txtMedicamentos.setText(nombresMedicamentos.toString());
-                } else {
-                    txtMedicamentos.setText("");
-                }
-
             } else {
                 JOptionPane.showMessageDialog(this, "El paciente seleccionado no tiene historial medico");
                 LimpiarCampos();
@@ -406,7 +383,7 @@ public class GestionHistorialPacientes extends javax.swing.JFrame {
     private void actualizarHistorial() {
         int fila = tablaHistorial.getSelectedRow();
         if (fila < 0) {
-            JOptionPane.showMessageDialog(this, "Seleccione un paciente para actualizar su historial.");
+            JOptionPane.showMessageDialog(this, "Seleccione un paciente para actualizar datos.");
             return;
         }
 
@@ -421,50 +398,14 @@ public class GestionHistorialPacientes extends javax.swing.JFrame {
             historialExistente.setAlergias(txtAlergias.getText());
             historialExistente.setEnfermedadesCronicas(txtEnfermedadesCronicas.getText());
 
-            List<Medicamento> nuevaListaMedicamentos = new ArrayList<>();
-
-            if (!txtMedicamentos.getText().trim().isEmpty()) {
-                Medicamento nuevoMedicamento = new Medicamento();
-                nuevoMedicamento.setNombre(txtMedicamentos.getText().trim());
-                nuevaListaMedicamentos.add(nuevoMedicamento);
-            }
-
-            historialExistente.setMedicamentosActuales(nuevaListaMedicamentos);
-
             if (historialDAO.actualizar(historialExistente)) {
-                JOptionPane.showMessageDialog(this, "Historial médico actualizado exitosamente");
+                JOptionPane.showMessageDialog(this, "Datos actualizados exitosamente");
                 cargarTabla("");
                 LimpiarCampos();
                 activiarBotonesEdicion(false);
                 habilitarCampos(false);
             } else {
-                JOptionPane.showMessageDialog(this, "Error al actualizar el historial médico");
-            }
-        } else {
-            HistorialMedico nuevoHistorial = new HistorialMedico();
-            nuevoHistorial.setIdPaciente(idPaciente);
-            nuevoHistorial.setTipoSangre(txtTipoSangre.getText());
-            nuevoHistorial.setAlergias(txtAlergias.getText());
-            nuevoHistorial.setEnfermedadesCronicas(txtEnfermedadesCronicas.getText());
-
-            List<Medicamento> nuevaListaMedicamentos = new ArrayList<>();
-
-            if (!txtMedicamentos.getText().trim().isEmpty()) {
-                Medicamento nuevoMedicamento = new Medicamento();
-                nuevoMedicamento.setNombre(txtMedicamentos.getText().trim());
-                nuevaListaMedicamentos.add(nuevoMedicamento);
-            }
-
-            nuevoHistorial.setMedicamentosActuales(nuevaListaMedicamentos);
-
-            if (historialDAO.registrar(nuevoHistorial)) {
-                JOptionPane.showMessageDialog(this, "Historial médico creado exitosamente");
-                cargarTabla("");
-                LimpiarCampos();
-                activiarBotonesEdicion(false);
-                habilitarCampos(false);
-            } else {
-                JOptionPane.showMessageDialog(this, "Error al crear el historial médico");
+                JOptionPane.showMessageDialog(this, "Error al actualizar datos");
             }
         }
     }
@@ -488,7 +429,6 @@ public class GestionHistorialPacientes extends javax.swing.JFrame {
         String[] columnNames = {"ID", "Nombre Completo", "Email", "Telefono", "Direccion"};
         modelo.setColumnIdentifiers(columnNames);
 
-        // Si el filtro no está vacío, filtra la lista antes de mostrarla
         if (filtro != null && !filtro.trim().isEmpty()) {
             for (Usuario u : listaPacientes) {
                 if (u.getNombre().toLowerCase().contains(filtro.toLowerCase())) {
@@ -503,7 +443,6 @@ public class GestionHistorialPacientes extends javax.swing.JFrame {
                 }
             }
         } else {
-            // Si no hay filtro, muestra todos los pacientes
             for (Usuario u : listaPacientes) {
                 Object[] fila = {
                     u.getIdUsuario(),
@@ -537,14 +476,12 @@ public class GestionHistorialPacientes extends javax.swing.JFrame {
         txtTipoSangre.setEnabled(estado);
         txtAlergias.setEnabled(estado);
         txtEnfermedadesCronicas.setEnabled(estado);
-        txtMedicamentos.setEnabled(estado);
     }
 
     private void LimpiarCampos() {
         txtTipoSangre.setText("");
         txtAlergias.setText("");
         txtEnfermedadesCronicas.setText("");
-        txtMedicamentos.setText("");
     }
 
     private void contarPacientes() {
@@ -567,7 +504,6 @@ public class GestionHistorialPacientes extends javax.swing.JFrame {
     private javax.swing.JTextField txtAlergias;
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtEnfermedadesCronicas;
-    private javax.swing.JTextField txtMedicamentos;
     private javax.swing.JTextField txtTipoSangre;
     private javax.swing.JTextField txtTotalPacientes;
     // End of variables declaration//GEN-END:variables

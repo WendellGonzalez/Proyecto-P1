@@ -365,11 +365,11 @@ public class RegistroMedico extends javax.swing.JFrame {
         boolean exito = dao.registrar(medico);
 
         if (exito) {
-            JOptionPane.showMessageDialog(this, "Medico registrado exitosamente");
+            JOptionPane.showMessageDialog(this, "Solicitud enviada exitosamente");
             new LOGIN().setVisible(true);
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(this, "Error al registrar Medico", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error al enviar solicitud", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 

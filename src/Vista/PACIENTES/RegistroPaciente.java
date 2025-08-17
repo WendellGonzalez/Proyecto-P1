@@ -7,13 +7,10 @@ package Vista.PACIENTES;
 import DAO.PacienteDAO;
 import DAOImpl.PacienteDAOImpl;
 import Model.HistorialMedico;
-import Model.Medicamento;
 import Model.Paciente;
 import Vista.LOGIN;
 import Vista.LoginORSignIn;
 import javax.swing.JOptionPane;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JMenuItem;
 
 // importar las librerias del formatter
@@ -54,7 +51,6 @@ public class RegistroPaciente extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtTipoSangre = new javax.swing.JTextField();
@@ -69,7 +65,6 @@ public class RegistroPaciente extends javax.swing.JFrame {
         txtRelacionConContacto = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtNumeroSeguro = new javax.swing.JTextField();
-        txtMedicamentosActuales = new javax.swing.JTextField();
         txtSeguroMedico = new javax.swing.JTextField();
         txtTelefonoContacto = new javax.swing.JFormattedTextField();
         jMenuBar3 = new javax.swing.JMenuBar();
@@ -91,9 +86,6 @@ public class RegistroPaciente extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
         jLabel3.setText("ENFERMEDADES CRONICAS:");
-
-        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
-        jLabel4.setText("MEDICAMENTOS ACTUALES:");
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
         jLabel5.setText("SEGURO MEDICO:");
@@ -159,11 +151,9 @@ public class RegistroPaciente extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtMedicamentosActuales, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txtSeguroMedico, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txtNumeroSeguro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -204,15 +194,11 @@ public class RegistroPaciente extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAlergias, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtEnfermedadesCronicas, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(15, 15, 15)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMedicamentosActuales, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(15, 15, 15)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSeguroMedico, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
@@ -236,7 +222,7 @@ public class RegistroPaciente extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55))
+                .addGap(117, 117, 117))
         );
 
         try {
@@ -319,7 +305,7 @@ public class RegistroPaciente extends javax.swing.JFrame {
 
         if (paciente == null || paciente.getIdUsuario() <= 0) {
             JOptionPane.showMessageDialog(this, "Error: El usuario no ha sido registrado correctamente.", "Error", JOptionPane.ERROR_MESSAGE);
-            return; // Exit the method to prevent the FOREIGN KEY error
+            return; 
         }
             
 
@@ -328,22 +314,8 @@ public class RegistroPaciente extends javax.swing.JFrame {
             historial.setAlergias(txtAlergias.getText().trim());
             historial.setEnfermedadesCronicas(txtEnfermedadesCronicas.getText().trim());
 
-            List<Medicamento> listaMedicamentos = new ArrayList<>();
-            
-            String textoMedicamento = txtMedicamentosActuales.getText().trim();
-            if (!textoMedicamento.isEmpty()) {
-                Medicamento m = new Medicamento();
-                m.setNombre(textoMedicamento);
-                m.setDosis("1 diaria");
-                m.setDuracion("Indefinido");
-                listaMedicamentos.add(m);
-            }
-            
-            historial.setMedicamentosActuales(listaMedicamentos);
-
             paciente.setHistorial(historial);
 
-            // Asignar datos restantes del paciente
             paciente.setSeguroMedico(txtSeguroMedico.getText().trim());
             paciente.setNumeroSeguro(txtNumeroSeguro.getText().trim());
             paciente.setContactoEmergencia(txtContactoEmergencia.getText().trim());
@@ -377,7 +349,6 @@ public class RegistroPaciente extends javax.swing.JFrame {
         txtAlergias.setText("");
         txtContactoEmergencia.setText("");
         txtEnfermedadesCronicas.setText("");
-        txtMedicamentosActuales.setText("");
         txtNumeroSeguro.setText("");
         txtRelacionConContacto.setText("");
         txtSeguroMedico.setText("");
@@ -395,7 +366,6 @@ public class RegistroPaciente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -407,7 +377,6 @@ public class RegistroPaciente extends javax.swing.JFrame {
     private javax.swing.JTextField txtAlergias;
     private javax.swing.JTextField txtContactoEmergencia;
     private javax.swing.JTextField txtEnfermedadesCronicas;
-    private javax.swing.JTextField txtMedicamentosActuales;
     private javax.swing.JTextField txtNumeroSeguro;
     private javax.swing.JTextField txtRelacionConContacto;
     private javax.swing.JTextField txtSeguroMedico;

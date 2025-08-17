@@ -68,7 +68,8 @@
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder justification="2" title="GESTION HISTORIAL MEDICO DE PACIENTES">
+            <TitledBorder justification="2" title="PACIENTES">
+              <Border PropertyName="innerBorder" info="null"/>
               <Font PropertyName="font" name="Helvetica Neue" size="18" style="1"/>
             </TitledBorder>
           </Border>
@@ -120,14 +121,13 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="txtTipoSangre" min="-2" pref="256" max="-2" attributes="0"/>
-                                  <Component id="txtEnfermedadesCronicas" alignment="0" min="-2" pref="256" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="txtAlergias" pref="257" max="32767" attributes="0"/>
-                                  <Component id="txtMedicamentos" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Component id="txtTipoSangre" min="-2" pref="256" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                      <Component id="txtAlergias" min="-2" pref="257" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="txtEnfermedadesCronicas" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -143,7 +143,7 @@
                                       <Component id="btnCancelar" min="-2" pref="176" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace min="0" pref="80" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -159,10 +159,7 @@
                           <Component id="txtAlergias" alignment="3" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtEnfermedadesCronicas" pref="100" max="32767" attributes="0"/>
-                          <Component id="txtMedicamentos" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="txtEnfermedadesCronicas" min="-2" pref="100" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnEditar" alignment="3" min="-2" pref="78" max="-2" attributes="0"/>
@@ -170,7 +167,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnActualizar" min="-2" pref="78" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="49" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -191,15 +188,6 @@
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                     <TitledBorder title="ALERGIAS"/>
-                  </Border>
-                </Property>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtMedicamentos">
-              <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="MEDICAMENTOS"/>
                   </Border>
                 </Property>
               </Properties>
