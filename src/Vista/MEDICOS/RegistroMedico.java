@@ -5,9 +5,13 @@
 package Vista.MEDICOS;
 
 import DAO.EspecialidadDAO;
+import DAO.HorarioDAO;
 import DAOImpl.EspecialidadDAOImpl;
 import DAO.MedicoDAO;
+import DAO.UsuarioDAO;
+import DAOImpl.HorarioDAOImpl;
 import DAOImpl.MedicoDAOImpl;
+import DAOImpl.UsuarioDAOimpl;
 import Model.Especialidad;
 import javax.swing.*;
 import java.time.format.DateTimeFormatter;
@@ -372,6 +376,9 @@ public class RegistroMedico extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error al enviar solicitud", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+   
+
+
     
     public void limpiarCampos() {
         txtAniosExperiencia.setText("");

@@ -5,7 +5,9 @@
 package Vista.PACIENTES;
 
 import DAO.PacienteDAO;
+import DAO.UsuarioDAO;
 import DAOImpl.PacienteDAOImpl;
+import DAOImpl.UsuarioDAOimpl;
 import Model.HistorialMedico;
 import Model.Paciente;
 import Vista.LOGIN;
@@ -303,10 +305,10 @@ public class RegistroPaciente extends javax.swing.JFrame {
     public void registroGeneralPaciente() {
         try {
 
-        if (paciente == null || paciente.getIdUsuario() <= 0) {
-            JOptionPane.showMessageDialog(this, "Error: El usuario no ha sido registrado correctamente.", "Error", JOptionPane.ERROR_MESSAGE);
-            return; 
-        }
+//        if (paciente == null || paciente.getIdUsuario() <= 0) {
+//            JOptionPane.showMessageDialog(this, "Error: El usuario no ha sido registrado correctamente.", "Error", JOptionPane.ERROR_MESSAGE);
+//            return; 
+//        }
             
 
             HistorialMedico historial = new HistorialMedico();
@@ -342,6 +344,7 @@ public class RegistroPaciente extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Error: No se pudo registrar el paciente. Verifique que los datos no estén duplicados o sean correctos.", "Error", JOptionPane.ERROR_MESSAGE);
             }
     }
+    
  
     
     public void limpiarCampos() {

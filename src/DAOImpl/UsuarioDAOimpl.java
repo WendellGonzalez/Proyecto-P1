@@ -4,8 +4,10 @@
  */
 package DAOImpl;
 
+import DAO.HorarioDAO;
 import DAO.UsuarioDAO;
 import Model.Administrador;
+import Model.HistorialMedico;
 import Model.Medico;
 import Model.Paciente;
 import Model.Usuario;
@@ -24,9 +26,19 @@ import javax.swing.JOptionPane;
  * @author wendellgonzalez
  */
 public class UsuarioDAOimpl implements UsuarioDAO {
+    
+        private HorarioDAO horarioDAO = new HorarioDAOImpl();
 
-    // SQL REGISTRO DE USUARIO GENERAL
+//    // SQL REGISTRO DE USUARIO GENERAL
     String REGISTRO_USUARIOS = "INSERT INTO usuarios (nombre, email, password, tipoUsuario, fechaNacimiento, telefono, direccion, sexo, edad)" + "VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
+    
+//    // REGISTRO DE MEDICO
+//        String REGISTRO_MEDICO = "INSERT INTO medicos (idMedico, idEspecialidad, numero_colegiatura, universidad, fecha_graduacion, anios_experiencia, estado_solicitud) VALUES (?, ?, ?, ?, ?, ?, 'ESPERA')";
+//        
+//        //REGISTRO PACIENTE
+//    String REGISTRO_PACIENTES = "INSERT INTO pacientes (idPaciente, seguro_medico, numero_seguro, contacto_emergencia, relacion_contacto, telefono_contacto) VALUES (?, ?, ?, ?, ?, ?)";
+//    String REGISTRO_HISTORIAL_PACIENTE = "INSERT INTO historialMedico (idPaciente, tipo_sangre, alergias, enfermedades_cronicas) VALUES (?,?,?,?)";
+//        
     
     //AUTENTICACION CONSULTAS
     String AUTENTICACION = "SELECT * from Usuarios WHERE email = ? AND Password = ?";
@@ -97,6 +109,7 @@ public class UsuarioDAOimpl implements UsuarioDAO {
                     return true;
                 }
             }
+            
         } catch (SQLException e) {
             if (e.getMessage().contains("UNIQUE KEY constraint")) {
                 JOptionPane.showMessageDialog(null, "El email ya está registrado.");
@@ -107,7 +120,7 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 
         return true;
     }
-
+    
     /**
      * AUTENTICACION
      *

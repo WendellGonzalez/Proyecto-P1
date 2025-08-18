@@ -334,6 +334,9 @@ public class GestionConsultas extends javax.swing.JFrame {
 
     // metodo para cuardar Consulta
     private void GuardarConsulta() {
+        
+        
+        
         if (txtDiagnostico.getText().isEmpty() || txtRecomendaciones.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, complete el diagnóstico y las recomendaciones.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             return;
