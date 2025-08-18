@@ -8,7 +8,6 @@ public class HistorialMedico {
     private String tipoSangre;
     private String alergias;
     private String enfermedadesCronicas;
-    private List<Medicamento> medicamentosActuales;
     
     private String seguroMedico;
     private String numeroSeguro;
@@ -23,14 +22,13 @@ public class HistorialMedico {
     }
 
     public HistorialMedico(int idHistorial, int idPaciente, String tipoSangre, String alergias, String enfermedadesCronicas,
-                           List<Medicamento> medicamentosActuales, String seguroMedico, String numeroSeguro,
+                           String seguroMedico, String numeroSeguro,
                            String contactoEmergencia, String relacionContacto, String telefonoContacto, String dosis, String duracion) {
         this.idHistorial = idHistorial;
         this.idPaciente = idPaciente;
         this.tipoSangre = tipoSangre;
         this.alergias = alergias;
         this.enfermedadesCronicas = enfermedadesCronicas;
-        this.medicamentosActuales = medicamentosActuales;
         this.seguroMedico = seguroMedico;
         this.numeroSeguro = numeroSeguro;
         this.contactoEmergencia = contactoEmergencia;
@@ -98,14 +96,6 @@ public class HistorialMedico {
 
     public void setEnfermedadesCronicas(String enfermedadesCronicas) {
         this.enfermedadesCronicas = enfermedadesCronicas;
-    }
-
-    public List<Medicamento> getMedicamentosActuales() {
-        return medicamentosActuales;
-    }
-
-    public void setMedicamentosActuales(List<Medicamento> medicamentosActuales) {
-        this.medicamentosActuales = medicamentosActuales;
     }
 
     public String getSeguroMedico() {

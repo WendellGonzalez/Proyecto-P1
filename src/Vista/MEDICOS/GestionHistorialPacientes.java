@@ -11,7 +11,6 @@ import DAOImpl.HistorialMedicoDAOImpl;
 import DAO.UsuarioDAO;
 import DAOImpl.UsuarioDAOimpl;
 import Model.HistorialMedico;
-import Model.Medicamento;
 import Model.Medico;
 import Model.Usuario;
 import Vista.LOGIN;

@@ -6,7 +6,6 @@ package DAOImpl;
 
 import DAO.PacienteDAO;
 import Model.HistorialMedico;
-import Model.Medicamento;
 import Model.Paciente;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +22,7 @@ public class PacienteDAOImpl implements PacienteDAO {
     String REGISTRO_HISTORIAL_PACIENTE = "INSERT INTO historialMedico (idPaciente, tipo_sangre, alergias, enfermedades_cronicas) VALUES (?,?,?,?)";
 //    String REGISTRO_MEDICAMENTOS_PACIENTE = "INSERT INTO medicamentos (idHistorial, nombre) VALUES (?,?)";
 
-    String PACIENTES_POR_MEDICO = "SELECT * FROM pacientes WHERE idMedico = ?";
-
+//    String PACIENTES_POR_MEDICO = "SELECT * FROM pacientes WHERE idMedico = ?";
     String HISTORIAL_POR_PACIENTE = "SELECT * FROM historialMedico WHERE idPaciente = ?";
 
     String UPDATE_PACIENTE = "UPDATE usuarios SET nombre = ?, direccion = ?, email = ?, telefono = ? WHERE tipoUsuario = 'PACIENTE';";
@@ -40,9 +38,7 @@ public class PacienteDAOImpl implements PacienteDAO {
     @Override
     public boolean registrar(Paciente paciente) {
 
-        try (Connection conn = DBconnection.obtenerConexion(); 
-                PreparedStatement stmtPaciente = conn.prepareStatement(REGISTRO_PACIENTE, Statement.RETURN_GENERATED_KEYS); 
-                PreparedStatement stmtHistorial = conn.prepareStatement(REGISTRO_HISTORIAL_PACIENTE, Statement.RETURN_GENERATED_KEYS)) {
+        try (Connection conn = DBconnection.obtenerConexion(); PreparedStatement stmtPaciente = conn.prepareStatement(REGISTRO_PACIENTE, Statement.RETURN_GENERATED_KEYS); PreparedStatement stmtHistorial = conn.prepareStatement(REGISTRO_HISTORIAL_PACIENTE, Statement.RETURN_GENERATED_KEYS)) {
 
             conn.setAutoCommit(false);
 
@@ -96,10 +92,16 @@ public class PacienteDAOImpl implements PacienteDAO {
         }
         return true;
     }
-
+    
     @Override
     public List<Paciente> listarPorMedico(int idMedico) {
         List<Paciente> lista = new ArrayList<>();
+
+        String PACIENTES_POR_MEDICO = "SELECT u.idUsuario, u.nombre, u.telefono, u.edad, "
+                + "p.idMedico, p.seguro_medico as seguroMedico, p.numero_seguro as numeroSeguro "
+                + "FROM pacientes p "
+                + "JOIN usuarios u ON u.idUsuario = p.idPaciente "
+                + "WHERE p.idMedico = ?";
 
         try (Connection conn = DBconnection.obtenerConexion(); PreparedStatement stmtConsulta = conn.prepareStatement(PACIENTES_POR_MEDICO)) {
 
@@ -111,7 +113,15 @@ public class PacienteDAOImpl implements PacienteDAO {
 
                 p.setIdUsuario(rsPacientes.getInt("idUsuario"));
                 p.setNombre(rsPacientes.getString("nombre"));
+                p.setTelefono(rsPacientes.getString("telefono"));
+                p.setEdad(rsPacientes.getInt("edad"));
+
                 p.setidMedico(rsPacientes.getInt("idMedico"));
+                p.setSeguroMedico(rsPacientes.getString("seguroMedico"));
+                p.setNumeroSeguro(rsPacientes.getString("numeroSeguro"));
+                
+                System.err.println("Seguro medico: " + rsPacientes.getString("seguroMedico"));
+                System.err.println("Numero Seguro: " + rsPacientes.getString("numeroSeguro"));
 
                 HistorialMedico h = null;
                 try (PreparedStatement stmtHistorial = conn.prepareStatement(HISTORIAL_POR_PACIENTE)) {
@@ -124,7 +134,7 @@ public class PacienteDAOImpl implements PacienteDAO {
                         h.setAlergias(rsHistorial.getString("alergias"));
                         h.setEnfermedadesCronicas(rsHistorial.getString("enfermedades_cronicas"));
                     }
-
+                    
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -136,6 +146,7 @@ public class PacienteDAOImpl implements PacienteDAO {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+
         return lista;
     }
 

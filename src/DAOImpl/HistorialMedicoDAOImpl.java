@@ -6,7 +6,6 @@ package DAOImpl;
 
 import DAO.HistorialMedicoDAO;
 import Model.HistorialMedico;
-import Model.Medicamento;
 import SQLConnection.DBconnection;
 
 //import static Model.Usuario.TipoUsuario.ADMINISTRADOR;

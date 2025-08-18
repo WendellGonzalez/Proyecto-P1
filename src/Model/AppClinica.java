@@ -29,7 +29,6 @@ Medico medico;
                 }
             }
         } catch (Exception e) {
-            System.err.println("Error al establecer el Look and Feel 'Nimbus'");
             e.printStackTrace();
         }
         SwingUtilities.invokeLater(() -> {
