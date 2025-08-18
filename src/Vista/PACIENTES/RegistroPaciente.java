@@ -342,7 +342,7 @@ public class RegistroPaciente extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Error: No se pudo registrar el paciente. Verifique que los datos no estén duplicados o sean correctos.", "Error", JOptionPane.ERROR_MESSAGE);
             }
     }
-    
+ 
     
     public void limpiarCampos() {
         txtTipoSangre.setText("");

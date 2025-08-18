@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface PacienteDAO {
     boolean registrar(Paciente paciente);
-    
+   
     boolean actualizar(Paciente paciente);
     
     boolean eliminar(int idPaciente);

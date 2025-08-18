@@ -359,7 +359,7 @@ public class RegistroMedico extends javax.swing.JFrame {
 
     }
 
-    // Metodo para guardar Medico Completo
+//     Metodo para guardar Medico Completo
     public void guardarMedicoCompleto() {
         MedicoDAO dao = new MedicoDAOImpl();
         boolean exito = dao.registrar(medico);
@@ -372,7 +372,7 @@ public class RegistroMedico extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Error al enviar solicitud", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-
+    
     public void limpiarCampos() {
         txtAniosExperiencia.setText("");
         txtFechaGraduacion.setText("");

@@ -27,7 +27,7 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 
     // SQL REGISTRO DE USUARIO GENERAL
     String REGISTRO_USUARIOS = "INSERT INTO usuarios (nombre, email, password, tipoUsuario, fechaNacimiento, telefono, direccion, sexo, edad)" + "VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
-
+    
     //AUTENTICACION CONSULTAS
     String AUTENTICACION = "SELECT * from Usuarios WHERE email = ? AND Password = ?";
     String OBTENER_MEDICO = "SELECT * FROM medicos WHERE idMedico = ?";

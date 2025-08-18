@@ -20,9 +20,7 @@ public class PacienteDAOImpl implements PacienteDAO {
 
     String REGISTRO_PACIENTE = "INSERT INTO pacientes (idPaciente, seguro_medico, numero_seguro, contacto_emergencia, relacion_contacto, telefono_contacto) VALUES (?, ?, ?, ?, ?, ?)";
     String REGISTRO_HISTORIAL_PACIENTE = "INSERT INTO historialMedico (idPaciente, tipo_sangre, alergias, enfermedades_cronicas) VALUES (?,?,?,?)";
-//    String REGISTRO_MEDICAMENTOS_PACIENTE = "INSERT INTO medicamentos (idHistorial, nombre) VALUES (?,?)";
 
-//    String PACIENTES_POR_MEDICO = "SELECT * FROM pacientes WHERE idMedico = ?";
     String HISTORIAL_POR_PACIENTE = "SELECT * FROM historialMedico WHERE idPaciente = ?";
 
     String UPDATE_PACIENTE = "UPDATE usuarios SET nombre = ?, direccion = ?, email = ?, telefono = ? WHERE tipoUsuario = 'PACIENTE';";

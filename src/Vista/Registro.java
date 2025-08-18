@@ -495,6 +495,8 @@ public class Registro extends javax.swing.JFrame {
 
     }
     
+    
+    
     private void seePasswords() {
         lblVerContrasena1.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override

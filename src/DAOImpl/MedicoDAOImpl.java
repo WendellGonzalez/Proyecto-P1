@@ -6,14 +6,11 @@ package DAOImpl;
 
 import DAO.HorarioDAO;
 import DAO.MedicoDAO;
-import DAOImpl.HorarioDAOImpl;
 import Model.Especialidad;
 import Model.Medico;
 import Model.Usuario;
 import SQLConnection.DBconnection;
 import java.sql.*;
-import java.time.DayOfWeek;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -114,6 +111,7 @@ public class MedicoDAOImpl implements MedicoDAO {
         return false;
     }
 
+    
     @Override
     public boolean actualizar(Medico medico) {
 
