@@ -43,8 +43,9 @@ public class CitaDAOImpl implements CitaDAO {
             + "WHERE C.idMedico = ?";
 
     String OBTENER_CITAS_PENDIENTES_POR_MEDICO = "SELECT c.idCita, c.fecha, c.hora, c.motivo, c.estado, "
-            + "u.idUsuario, u.nombre, u.edad, u.email, u.telefono "
+            + "u.idUsuario, u.nombre, u.edad, u.email, u.telefono, p.seguro_medico, p.numero_seguro "
             + "FROM Citas c JOIN Usuarios u ON c.idPaciente = u.idUsuario "
+            + "Join pacientes p on c.idPaciente = p.idPaciente "
             + "WHERE c.idMedico = ? AND c.estado in ('PENDIENTE', 'ACEPTADA') order by fecha asc, hora asc";
 
     // Actualizar estado de la cita
@@ -79,7 +80,6 @@ public class CitaDAOImpl implements CitaDAO {
                     if (horaSQL != null) {
                         cita.setHora(horaSQL.toLocalTime());
                     } else {
-                        // Manejar el caso de que la hora sea NULL si es necesario
                         cita.setHora(null);
                     }
 
@@ -177,12 +177,14 @@ public class CitaDAOImpl implements CitaDAO {
                     cita.setMotivo(rs.getString("motivo"));
                     cita.setEstado(Cita.Estado.valueOf(rs.getString("estado")));
 
-                    Usuario paciente = new Paciente();
+                    Paciente paciente = new Paciente();
                     paciente.setIdUsuario(rs.getInt("idUsuario"));
                     paciente.setNombre(rs.getString("nombre"));
                     paciente.setEdad(rs.getInt("edad"));
                     paciente.setEmail(rs.getString("email"));
                     paciente.setTelefono(rs.getString("telefono"));
+                    paciente.setSeguroMedico(rs.getString("seguro_medico"));
+                    paciente.setNumeroSeguro(rs.getString("numero_seguro"));
                     cita.setPaciente(paciente);
 
                     citas.add(cita);

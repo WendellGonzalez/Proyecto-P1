@@ -323,9 +323,25 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
-        actualizarDatosPersonales();
-        cargarTextFields();
-        activarBotones(true);
+
+    actualizarDatosPersonales();
+
+    usuarioLogueado.setNombre(txtNombre.getText());
+    usuarioLogueado.setTelefono(txtTelFormatter.getText());
+    usuarioLogueado.setEmail(txtCorreoElectronico.getText());
+    usuarioLogueado.setDireccion(txtDIRECCION.getText());
+
+    cargarTextFields(); 
+    activarBotones(false);
+        habilitarCampos(false);
+        
+        txtNombre.setForeground(Color.gray);
+        txtTelFormatter.setForeground(Color.gray);
+        txtCorreoElectronico.setForeground(Color.gray);
+        txtDIRECCION.setForeground(Color.gray);
+
+    this.revalidate();
+    this.repaint();
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
@@ -422,7 +438,7 @@ public class EdicionDatosPersonales extends javax.swing.JFrame {
         }
 
     }
-
+    
     private void activarBotones(boolean estado) {
         btnActualizar.setEnabled(estado);
         btncancelar.setEnabled(estado);

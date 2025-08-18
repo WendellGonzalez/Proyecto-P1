@@ -18,7 +18,7 @@ import SQLConnection.DBconnection;
  */
 public class PacienteDAOImpl implements PacienteDAO {
 
-    String REGISTRO_PACIENTE = "INSERT INTO pacientes (idPaciente, idMedico, seguro_medico, numero_seguro, contacto_emergencia, relacion_contacto, telefono_contacto) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    String REGISTRO_PACIENTE = "INSERT INTO pacientes (idPaciente, seguro_medico, numero_seguro, contacto_emergencia, relacion_contacto, telefono_contacto) VALUES (?, ?, ?, ?, ?, ?)";
     String REGISTRO_HISTORIAL_PACIENTE = "INSERT INTO historialMedico (idPaciente, tipo_sangre, alergias, enfermedades_cronicas) VALUES (?,?,?,?)";
 //    String REGISTRO_MEDICAMENTOS_PACIENTE = "INSERT INTO medicamentos (idHistorial, nombre) VALUES (?,?)";
 
@@ -30,6 +30,13 @@ public class PacienteDAOImpl implements PacienteDAO {
     String ELIMINAR_PACIENTE = "DELETE FROM pacientes WHERE idPaciente = ?";
 
     String LISTAR_PACIENTES = "SELECT * FROM pacientes";
+    
+    String PACIENTES_POR_MEDICO = "SELECT u.idUsuario, u.nombre, u.telefono, u.edad, "
+            + "p.seguro_medico, p.numero_seguro "
+            + "FROM usuarios u "
+            + "JOIN pacientes p ON u.idUsuario = p.idPaciente "
+            + "JOIN citas c ON c.idPaciente = p.idPaciente "
+            + "WHERE c.idMedico = ?";
 
     private boolean esVacio(String s) {
         return s == null || s.trim().isEmpty();
@@ -45,18 +52,11 @@ public class PacienteDAOImpl implements PacienteDAO {
             int idUsuario = paciente.getIdUsuario();
 
             stmtPaciente.setInt(1, idUsuario);
-
-            if (paciente.getidMedico() > 0) {
-                stmtPaciente.setInt(2, paciente.getidMedico());
-            } else {
-                stmtPaciente.setNull(2, java.sql.Types.INTEGER);
-            }
-
-            stmtPaciente.setString(3, esVacio(paciente.getSeguroMedico()) ? null : paciente.getSeguroMedico());
-            stmtPaciente.setString(4, esVacio(paciente.getNumeroSeguro()) ? null : paciente.getNumeroSeguro());
-            stmtPaciente.setString(5, esVacio(paciente.getContactoEmergencia()) ? null : paciente.getContactoEmergencia());
-            stmtPaciente.setString(6, esVacio(paciente.getRelacionContacto()) ? null : paciente.getRelacionContacto());
-            stmtPaciente.setString(7, esVacio(paciente.getTelefonoContacto()) ? null : paciente.getTelefonoContacto());
+            stmtPaciente.setString(2, esVacio(paciente.getSeguroMedico()) ? null : paciente.getSeguroMedico());
+            stmtPaciente.setString(3, esVacio(paciente.getNumeroSeguro()) ? null : paciente.getNumeroSeguro());
+            stmtPaciente.setString(4, esVacio(paciente.getContactoEmergencia()) ? null : paciente.getContactoEmergencia());
+            stmtPaciente.setString(5, esVacio(paciente.getRelacionContacto()) ? null : paciente.getRelacionContacto());
+            stmtPaciente.setString(6, esVacio(paciente.getTelefonoContacto()) ? null : paciente.getTelefonoContacto());
 
             int filasPaciente = stmtPaciente.executeUpdate();
             if (filasPaciente == 0) {
@@ -93,62 +93,57 @@ public class PacienteDAOImpl implements PacienteDAO {
         return true;
     }
     
-    @Override
-    public List<Paciente> listarPorMedico(int idMedico) {
-        List<Paciente> lista = new ArrayList<>();
+@Override
+public List<Paciente> listarPorMedico(int idMedico) {
+    List<Paciente> lista = new ArrayList<>();
 
-        String PACIENTES_POR_MEDICO = "SELECT u.idUsuario, u.nombre, u.telefono, u.edad, "
-                + "p.idMedico, p.seguro_medico as seguroMedico, p.numero_seguro as numeroSeguro "
-                + "FROM pacientes p "
-                + "JOIN usuarios u ON u.idUsuario = p.idPaciente "
-                + "WHERE p.idMedico = ?";
+    try (Connection conn = DBconnection.obtenerConexion();
+         PreparedStatement stmtConsulta = conn.prepareStatement(PACIENTES_POR_MEDICO)) {
 
-        try (Connection conn = DBconnection.obtenerConexion(); PreparedStatement stmtConsulta = conn.prepareStatement(PACIENTES_POR_MEDICO)) {
+        stmtConsulta.setInt(1, idMedico);
+        ResultSet rsPacientes = stmtConsulta.executeQuery();
 
-            stmtConsulta.setInt(1, idMedico);
-            ResultSet rsPacientes = stmtConsulta.executeQuery();
+        while (rsPacientes.next()) {
+            Paciente p = new Paciente();
 
-            while (rsPacientes.next()) {
-                Paciente p = new Paciente();
+            p.setIdUsuario(rsPacientes.getInt("idUsuario"));
+            p.setNombre(rsPacientes.getString("nombre"));
+            p.setTelefono(rsPacientes.getString("telefono"));
+            p.setEdad(rsPacientes.getInt("edad"));
 
-                p.setIdUsuario(rsPacientes.getInt("idUsuario"));
-                p.setNombre(rsPacientes.getString("nombre"));
-                p.setTelefono(rsPacientes.getString("telefono"));
-                p.setEdad(rsPacientes.getInt("edad"));
+            p.setSeguroMedico(rsPacientes.getString("seguro_medico") != null 
+                               ? rsPacientes.getString("seguro_medico") 
+                               : "Sin seguro");
+            p.setNumeroSeguro(rsPacientes.getString("numero_seguro") != null 
+                              ? rsPacientes.getString("numero_seguro") 
+                              : "N/A");
 
-                p.setidMedico(rsPacientes.getInt("idMedico"));
-                p.setSeguroMedico(rsPacientes.getString("seguroMedico"));
-                p.setNumeroSeguro(rsPacientes.getString("numeroSeguro"));
-                
-                System.err.println("Seguro medico: " + rsPacientes.getString("seguroMedico"));
-                System.err.println("Numero Seguro: " + rsPacientes.getString("numeroSeguro"));
+            HistorialMedico h = null;
+            try (PreparedStatement stmtHistorial = conn.prepareStatement(HISTORIAL_POR_PACIENTE)) {
+                stmtHistorial.setInt(1, p.getIdUsuario());
+                ResultSet rsHistorial = stmtHistorial.executeQuery();
 
-                HistorialMedico h = null;
-                try (PreparedStatement stmtHistorial = conn.prepareStatement(HISTORIAL_POR_PACIENTE)) {
-                    stmtHistorial.setInt(1, p.getIdUsuario());
-                    ResultSet rsHistorial = stmtHistorial.executeQuery();
-
-                    if (rsHistorial.next()) {
-                        h = new HistorialMedico();
-                        h.setTipoSangre(rsHistorial.getString("tipo_sangre"));
-                        h.setAlergias(rsHistorial.getString("alergias"));
-                        h.setEnfermedadesCronicas(rsHistorial.getString("enfermedades_cronicas"));
-                    }
-                    
-                } catch (Exception e) {
-                    e.printStackTrace();
+                if (rsHistorial.next()) {
+                    h = new HistorialMedico();
+                    h.setTipoSangre(rsHistorial.getString("tipo_sangre"));
+                    h.setAlergias(rsHistorial.getString("alergias"));
+                    h.setEnfermedadesCronicas(rsHistorial.getString("enfermedades_cronicas"));
                 }
-
-                p.setHistorial(h);
-                lista.add(p);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
 
-        } catch (SQLException ex) {
-            ex.printStackTrace();
+            p.setHistorial(h);
+            lista.add(p);
         }
 
-        return lista;
+    } catch (SQLException ex) {
+        ex.printStackTrace();
     }
+
+    return lista;
+}
+
 
     @Override
     public boolean actualizar(Paciente p) {

@@ -36,7 +36,7 @@ public class UsuarioDAOimpl implements UsuarioDAO {
     String LISTAR_USUARIOS = "SELECT u.*, m.estado_solicitud FROM usuarios u "
             + "LEFT JOIN medicos m ON u.idUsuario = m.idMedico "
             + "WHERE (u.tipoUsuario != 'MEDICO' OR m.estado_solicitud = 'ACEPTADO') "
-            + "AND (u.nombre LIKE ? OR u.email LIKE ?)";
+            + "AND (u.nombre LIKE ? OR u.email LIKE ?);";
 
     //ACTUALIZACIONES
     String UPDATE_USUARIOS = "UPDATE usuarios SET nombre = ?, direccion = ?, email = ?, telefono = ? where idUsuario = ?";
@@ -55,7 +55,7 @@ public class UsuarioDAOimpl implements UsuarioDAO {
     String CONTAR_MEDICOS = "SELECT COUNT(*) FROM usuarios u "
             + "Join medicos m on m.idMedico = u.idUsuario "
             + " WHERE tipoUsuario = 'MEDICO' and estado_solicitud = 'ACEPTADO';";
-    
+
     String CONTAR_PACIENTES = "SELECT COUNT(*) FROM usuarios WHERE tipoUsuario = 'PACIENTE';";
     String CONTAR_PACIENTESPORMEDICO = "SELECT COUNT(DISTINCT idPaciente) FROM Citas where idMedico = ?";
 
@@ -187,7 +187,6 @@ public class UsuarioDAOimpl implements UsuarioDAO {
 
             while (rs.next()) {
 
-                //Obtener el tipo de usuario desde la DB
                 String tipoStr = rs.getString("tipoUsuario");
                 TipoUsuario tipo = TipoUsuario.valueOf(tipoStr);
                 Usuario u;
@@ -387,7 +386,7 @@ public class UsuarioDAOimpl implements UsuarioDAO {
             return false;
         }
     }
-    
+
     @Override
     public boolean actualizarContrasena(Usuario usuario) {
 

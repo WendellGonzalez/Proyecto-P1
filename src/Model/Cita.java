@@ -21,8 +21,10 @@ public class Cita {
     private Usuario paciente;
     private Usuario medico;
     private int edadPaciente;
+    private String seguroDelPaciente;
+    private String numeroSeguro;
 
-    public Cita(int idCita, int idPaciente, int idMedico, LocalDate fecha, LocalTime hora, String motivo, Estado estado, Paciente edadPaciente) {
+    public Cita(int idCita, int idPaciente, int idMedico, LocalDate fecha, LocalTime hora, String motivo, Estado estado, Paciente edadPaciente, Paciente seguroMedico, Paciente numeroSeguro) {
         this.idCita = idCita;
         this.idPaciente = idPaciente;
         this.idMedico = idMedico;
@@ -31,8 +33,26 @@ public class Cita {
         this.motivo = motivo;
         this.estado = estado;
         this.edadPaciente = edadPaciente.getEdad();
+        this.seguroDelPaciente = seguroMedico.getSeguroMedico();
+        this.numeroSeguro = numeroSeguro.getNumeroSeguro();
+    }
+    
+    public String getnumeroSeguroMedico() {
+        return numeroSeguro;
+    }
+    
+    public void setnumeroSeguroMedico(Paciente numeroSeguro) {
+        this.numeroSeguro = numeroSeguro.getNumeroSeguro();
     }
 
+    public String getSeguroMedico() {
+        return seguroDelPaciente;
+    }
+    
+    public void setSeguroMedico(Paciente seguroMedico) {
+        this.seguroDelPaciente = seguroMedico.getSeguroMedico();
+    }
+    
     public int getEdadpaciente() {
         return edadPaciente;
     }

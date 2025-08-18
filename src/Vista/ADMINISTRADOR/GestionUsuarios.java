@@ -25,9 +25,11 @@ public class GestionUsuarios extends javax.swing.JFrame {
     private List<Usuario> listaUsuario = new ArrayList<>();
     DefaultTableModel mt = new DefaultTableModel();
     private Administrador administrador;
+    private Usuario usuario;
 
     /**
      * Creates new form GestionMedicos
+     *
      * @param administrador
      */
     public GestionUsuarios(Administrador administrador) {
@@ -395,7 +397,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
         btnEliminar.setEnabled(true);
         habilitarCampos(false);
     }
-    
+
     // Metodo editar
     private void funcionEditar() {
         int fila = tablaUsuarios.getSelectedRow();
@@ -462,19 +464,27 @@ public class GestionUsuarios extends javax.swing.JFrame {
     // Metodo eliminar
     private void funcionEliminar() {
         int fila = tablaUsuarios.getSelectedRow();
-        if (fila >= 0) {
-            int confirmar = JOptionPane.showConfirmDialog(this, "¿Eliminar este usuario?", "Confirmar", JOptionPane.YES_NO_OPTION);
-            if (confirmar == JOptionPane.YES_OPTION) {
-                int id = Integer.parseInt(tablaUsuarios.getValueAt(fila, 0).toString());
-                UsuarioDAO dao = new UsuarioDAOimpl();
-                if (dao.eliminar(id)) {
-                    JOptionPane.showMessageDialog(this, "Usuario eliminado.");
-                    txtTotalUsuarios.setText(String.valueOf(dao.contarUsuarios()));
-                    cargarTabla("");
-                    LimpiarCampos();
+
+        try {
+            if (fila >= 0) {
+                int confirmar = JOptionPane.showConfirmDialog(this, "¿Eliminar este usuario?", "Confirmar", JOptionPane.YES_NO_OPTION);
+                if (confirmar == JOptionPane.YES_OPTION) {
+                    int id = Integer.parseInt(tablaUsuarios.getValueAt(fila, 0).toString());
+                    UsuarioDAO dao = new UsuarioDAOimpl();
+                    if (dao.eliminar(id)) {
+                        JOptionPane.showMessageDialog(this, "Usuario eliminado.");
+                        txtTotalUsuarios.setText(String.valueOf(dao.contarUsuarios()));
+                        cargarTabla("");
+                        LimpiarCampos();
+                    }
                 }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            String nombreUsuario = usuario.getNombre();
+            JOptionPane.showMessageDialog(this, "No se puede eliminar " + nombreUsuario + ". Porque está en proceso de cita.");
         }
+
     }
 
     //Metodo para cargar tabla con todos los usuarios
