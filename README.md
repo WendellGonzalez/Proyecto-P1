@@ -7,7 +7,7 @@
 
 Sistema de Citas Médicas ( ClinicaApp )
 
-Introducción
+<b>Introducción</b>
 
 El presente documento describe en detalle el diseño, funcionamiento y organización del Sistema de Citas Médicas en Línea, una plataforma digital que permite gestionar de manera eficiente la atención sanitaria entre pacientes, médicos y administradores.
 Este sistema centraliza la información de los usuarios, agiliza la programación de citas y facilita la comunicación directa entre las partes involucradas.
