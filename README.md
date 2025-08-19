@@ -1,3 +1,6 @@
+<img width="130" height="130" alt="logoClinic" src="https://github.com/user-attachments/assets/f3be0599-9651-45cd-81d1-b958b81eb63f" />
+
+
 Sistema de Citas Médicas ( ClinicaApp )
 
 Introducción
