@@ -11,6 +11,7 @@ import javax.swing.*;
 import Vista.LOGIN;
 import Vista.InformacionClinica;
 import Vista.EdicionDatosPersonales;
+import Vista.PACIENTES.ManualDePaciente;
 
 /**
  *
@@ -211,6 +212,7 @@ public class PanelPacientes extends javax.swing.JFrame {
         JMenuItem itemInformacion = new JMenuItem("Acerca de nosotros");
         JMenuItem itemVisionYMision = new JMenuItem("Vision y Mision");
         JMenuItem itemContactos = new JMenuItem("Contactanos");
+        JMenuItem itemManual = new JMenuItem("Manual de usuario");
 
         itemInformacion.addActionListener(e -> {
             new InformacionClinica().setVisible(true);
@@ -224,10 +226,16 @@ public class PanelPacientes extends javax.swing.JFrame {
             new InformacionClinica().setVisible(true);
         });
 
+        itemManual.addActionListener(e -> {
+            new ManualDePaciente().setVisible(true);
+        });
+
         jMenu2.add(itemInformacion);
         jMenu2.add(itemVisionYMision);
         jMenu2.addSeparator();
         jMenu2.add(itemContactos);
+        jMenu2.addSeparator();
+        jMenu2.add(itemManual);
 
         jMenuBar1.add(jMenu2);
 
@@ -304,8 +312,6 @@ public class PanelPacientes extends javax.swing.JFrame {
     private javax.swing.JButton btnVerMisCitas;
     private javax.swing.JButton btnVerRecetas;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

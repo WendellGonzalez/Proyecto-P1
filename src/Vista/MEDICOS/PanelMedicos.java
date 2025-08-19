@@ -155,6 +155,7 @@ public class PanelMedicos extends javax.swing.JFrame {
 
         JMenuItem itemCerrarSesion = new JMenuItem("Cerrar sesión");
         JMenuItem itemVolver = new JMenuItem("Volver al módulo anterior");
+        JMenuItem itemManual = new JMenuItem("Manual de usuario");
         JMenuItem itemSalir = new JMenuItem("Salir del sistema");
 
         itemCerrarSesion.addActionListener(e -> {
@@ -167,6 +168,10 @@ public class PanelMedicos extends javax.swing.JFrame {
             new LOGIN().setVisible(true);
         });
 
+        itemManual.addActionListener(e -> {
+            new ManualDeMedicos().setVisible(true);
+        });
+
         itemSalir.addActionListener(e -> {
             int resp = JOptionPane.showConfirmDialog(this, "¿Deseas salir del sistema?", "Confirmar Salida", JOptionPane.YES_NO_OPTION);
             if(resp == JOptionPane.YES_OPTION) {
@@ -176,6 +181,8 @@ public class PanelMedicos extends javax.swing.JFrame {
 
         jMenu1.add(itemCerrarSesion);
         jMenu1.add(itemVolver);
+        jMenu1.addSeparator();
+        jMenu1.add(itemManual);
         jMenu1.addSeparator();
         jMenu1.add(itemSalir);
 
