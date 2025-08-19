@@ -5,9 +5,13 @@
        height="200" />
 </p>
 
-Sistema de Citas Médicas ( ClinicaApp )
+<p align="center">
+<b>SISTEMA DE CITAS MEDICAS ( ClinicaApp )</b>
+</p>
 
+<p align="center">
 <b>INTRODUCCION</b>
+</p>
 
 El presente documento describe en detalle el diseño, funcionamiento y organización del Sistema de Citas Médicas en Línea, una plataforma digital que permite gestionar de manera eficiente la atención sanitaria entre pacientes, médicos y administradores.
 Este sistema centraliza la información de los usuarios, agiliza la programación de citas y facilita la comunicación directa entre las partes involucradas.
@@ -16,6 +20,7 @@ A través de sus diferentes módulos —paciente, médico y administrador— se 
 <p align="center">
 <b>OBJETIVOS DEL SISTEMA</b>
 </p>
+
 Objetivo General:
 Brindar una plataforma digital que permita el registro, gestión y control de citas médicas, optimizando la interacción entre pacientes, médicos y administradores.
 
@@ -26,9 +31,11 @@ Objetivos Específicos:
 - Proporcionar al médico un perfil completo del paciente antes de la consulta.
 - Otorgar a los administradores control total sobre la plataforma para su correcto funcionamiento.
 - Centralizar toda la información de citas y participantes en un sistema único y accesible.
-
+  
+<p align="center">
 <b>FASES Y FUNCIONALIDADES DEL SISTEMA</b>
-
+  </p>
+  
 <b>Fase 1:</b> Registro de Pacientes
 Propósito: Permitir que los pacientes creen una cuenta para acceder a las funciones del sistema.
 Datos solicitados: Nombre completo, Edad y fecha de nacimiento, Género, Dirección y teléfono, Correo electrónico, Contraseña, Información médica básica.
@@ -55,7 +62,11 @@ Proceso médico: Revisar solicitudes, confirmar o modificar, agregar notas previ
 <b>Fase 8:</b> Módulo del Administrador
 Rol: Supervisar funcionamiento del sistema, validar registro de médicos, gestionar datos. 
 Permisos: Acceso a todos los perfiles, modificación de configuraciones.
-Organización del Sistema
+
+<p align="center">
+<b>ORGANIZACION DEL SISTEMA</b>
+</p>
+
 El sistema se estructura en tres módulos principales:
 
 <b>1. Módulo de Pacientes:</b>
@@ -88,15 +99,21 @@ El sistema se estructura en tres módulos principales:
 - Gestión y control total.
 - Validación de médicos.
 - Gestion de usuarios en general, o por separado.
-
- <b>Conclusión</b>
+  
+<p align="center">
+ <b>CONCLUSION</b>
+</p>
 
 Este sistema de citas médicas digital es una solución integral que optimiza el proceso de atención sanitaria desde el registro hasta la consulta.
 La inclusión de un módulo administrativo robusto asegura el control y la seguridad de los datos, mientras que la validación de médicos garantiza la calidad de la atención.
 
 Gracias a su diseño modular y funciones específicas para cada tipo de usuario, la plataforma mejora la experiencia del paciente, organiza el trabajo del médico y facilita la supervisión por parte de los administradores.
 Este enfoque garantiza un flujo de trabajo eficiente, seguro y adaptable a diferentes especialidades y entornos clínicos.
-Resumen del Flujo
+
+<p align="center">
+<b>RESUMEN DEL FLUJO</b>
+</p>
+
 1.	Registro de paciente/médico → Creación de cuenta.
 2.	Aprobación por administrador (solo médicos).
 3.	Inicio de sesión → Acceso al panel.
