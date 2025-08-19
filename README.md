@@ -4,11 +4,11 @@
        width="200" 
        height="200" />
 </p>
-
+<br>
 <p align="center">
 <b>SISTEMA DE CITAS MEDICAS ( ClinicaApp )</b>
 </p>
-
+<br>
 <p align="center">
 <b>INTRODUCCION</b>
 </p>
