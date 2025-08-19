@@ -88,4 +88,3 @@ Resumen del Flujo
 4.	Solicitud de cita → Selección de especialidad, médico, fecha, hora y síntomas.
 5.	Confirmación → Notificación a paciente y médico.
 6.	Administrador supervisa y mantiene orden de datos.
-<img width="468" height="649" alt="image" src="https://github.com/user-attachments/assets/1d0993bf-1ea6-4d7c-a6d0-94eca425b465" />
