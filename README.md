@@ -120,3 +120,68 @@ Este enfoque garantiza un flujo de trabajo eficiente, seguro y adaptable a difer
 4.	Solicitud de cita → Selección de especialidad, médico, fecha, hora y síntomas.
 5.	Confirmación → Notificación a paciente y médico.
 6.	Administrador supervisa y mantiene orden de datos.
+
+
+IMÁGENES DEL SISTEMA
+-	Esta es la interfaz principal donde se elige si iniciar sesión o registrarse y también un pequeño “acerca de” de la empresa.
+ 
+
+
+
+-	La interfaz de registro
+ 
+
+-	Este es el inicio de sesión. Aquí accedo con la cuenta del admin
+ 
+
+-	El 1er panel de administrador
+ 
+ 
+ 
+ 
+
+
+
+
+-	Gestion de usuarios en general (Todos los usuarios juntos) y también por separado, pacientes y medicos.
+ 
+ 
+ 
+
+
+ 
+
+
+
+-	Menú con Jmenu items para cerrar sesion, volver al modulo anterior y salir del sistema.
+  
+-	Aquí es un apartado para editar datos personales.
+ 
+
+
+
+
+
+
+
+-	Panel de los pacientes
+ 
+-	El apartado de informaciones
+ 
+-	El apartado para realizar citas
+ 
+-	El apartado para ver todas las citas que he tenido, con qué doctor, por cual motivo y en qué fecha. También si está en espera, realizada o rechazada. Puede funcionar como un apartado de notificaciones.
+ 
+
+-	Apartado para ver todas las recetas que me han puesto los doctores en las consultas
+ 
+
+-	Panel de medicos 
+ 
+-	Aquí aparecen todos los pacientes que han sido pacientes especificamente de este doctor en algun momento.
+ 
+ 
+ 
+-	Este apartado aparece cuando se le da al boton rojo que permite ver el historial del paciente actual.
+<img width="468" height="470" alt="image" src="https://github.com/user-attachments/assets/769dc6e3-b8a1-4c40-a923-599de3bc4fee" />
+
