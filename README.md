@@ -148,6 +148,12 @@ IMÁGENES DEL SISTEMA
  
  <img width="540" height="291" alt="image" src="https://github.com/user-attachments/assets/23e94a58-7d95-46ca-96a6-a857eb819dd5" />
 
+ <img width="496" height="270" alt="image" src="https://github.com/user-attachments/assets/b0d209e9-6305-43a0-90a7-632007394f46" />
+
+<img width="540" height="294" alt="image" src="https://github.com/user-attachments/assets/6c1b3407-225d-4806-8430-f79164932f43" />
+
+- Gestion e especialidades
+
  <img width="532" height="289" alt="image" src="https://github.com/user-attachments/assets/849c6c1e-6320-490f-abe4-d190596f4024" />
 
 
@@ -157,9 +163,6 @@ IMÁGENES DEL SISTEMA
 
 <img width="540" height="297" alt="image" src="https://github.com/user-attachments/assets/d82d70bd-0976-4368-86f8-05b3a5c58c62" />
 
-<img width="496" height="270" alt="image" src="https://github.com/user-attachments/assets/b0d209e9-6305-43a0-90a7-632007394f46" />
-
-<img width="540" height="294" alt="image" src="https://github.com/user-attachments/assets/6c1b3407-225d-4806-8430-f79164932f43" />
 
 
 -	Menú con Jmenu items para cerrar sesion, volver al modulo anterior y salir del sistema.
