@@ -11,7 +11,6 @@ import javax.swing.*;
 import Vista.LOGIN;
 import Vista.InformacionClinica;
 import Vista.EdicionDatosPersonales;
-import Vista.PACIENTES.ManualDePaciente;
 
 /**
  *

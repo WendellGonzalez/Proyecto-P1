@@ -349,6 +349,7 @@ public class GestionEspecialidades extends javax.swing.JFrame {
 
     private void tablaEspecialidadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaEspecialidadesMouseClicked
         // TODO add your handling code here:
+
         int fila = tablaEspecialidades.getSelectedRow();
         if (fila >= 0) {
             Especialidad e = listaEspecialidad.get(fila);
@@ -493,7 +494,7 @@ public class GestionEspecialidades extends javax.swing.JFrame {
         }
     }
     
-
+    // Metodo para el textfield de busqueda de especialidades, con un filtro.
     private void filtrarEspecialidades(String texto) {
         EspecialidadDAO dao = new EspecialidadDAOImpl();
         List<Especialidad> lista = dao.obtenerTodas();
@@ -513,6 +514,7 @@ public class GestionEspecialidades extends javax.swing.JFrame {
         }
     }
 
+    // Metodo booleano para activar botones.
     private void activiarBotonesEdicion(boolean estado) {
         btnEditar.setEnabled(estado);
         btnEliminar.setEnabled(estado);
@@ -521,16 +523,19 @@ public class GestionEspecialidades extends javax.swing.JFrame {
         btnAgregar.setEnabled(estado);
     }
 
+    // Metodo para habilitar los campos 
     private void habilitarCampos(boolean estado) {
         txtNombreEspecialidad.setEnabled(estado);
         txtDescripcion.setEnabled(estado);
     }
 
+    // Metodo para limpiar los campos
     private void limpiarCampos() {
         txtNombreEspecialidad.setText("");
         txtDescripcion.setText("");
     }
 
+    // Metodo que me trae el total de especialidades para ponerlo en el textfield del total de especialidades.
     private void contadorDeEspecialidades() {
         EspecialidadDAO dao = new EspecialidadDAOImpl();
         int totalEspecialidades = dao.contarEspecialidades();

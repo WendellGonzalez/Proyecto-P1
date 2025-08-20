@@ -22,21 +22,27 @@ public class MedicoDAOImpl implements MedicoDAO {
 
     private HorarioDAO horarioDAO = new HorarioDAOImpl();
 
+    // Insert para registro de medico
     String REGISTRO_MEDICO = "INSERT INTO medicos (idMedico, idEspecialidad, numero_colegiatura, universidad, fecha_graduacion, anios_experiencia, estado_solicitud) VALUES (?, ?, ?, ?, ?, ?, 'ESPERA')";
 
+    // Actualizar metico    
     String ACTUALIZAR_MEDICO = "UPDATE medicos SET especialidad = ?, numero_colegiatura = ?, universidad = ?, fecha_graduacion = ?, anios_experiencia = ? WHERE idMedico = ?";
 
+    // Eliminar medicos
     String ELIMINAR_MEDICO = "DELETE FROM medicos WHERE idMedico = ?";
 
+    // Query para mostrar una lista de los medicos
     String LISTAR_MEDICOS = "SELECT m.*, e.nombre, e.descripcion "
             + " FROM medicos m "
             + "JOIN especialidades e ON m.idEspecialidad = e.idEspecialidad";
 
+    // Obtener los medicos por especialidad
     String OBTENER_MEDICOS_POR_ESPECIALIDAD = "SELECT m.idMedico, u.nombre, u.telefono, m.numero_colegiatura, m.universidad, m.anios_experiencia "
             + "FROM medicos m "
             + "JOIN usuarios u on m.idMedico = u.idUsuario "
             + "WHERE m.idEspecialidad = ? and m.estado_solicitud = 'ACEPTADO'";
 
+    // Obtener los medicos en espera que todavia no han sido aceptados ni rechazados por el administrador
     String OBTENER_MEDICOS_EN_ESPERA = "SELECT u.idUsuario, u.nombre, u.edad, u.email, u.password, u.tipoUsuario, "
             + "u.fechaNacimiento, u.telefono, u.direccion, u.sexo, "
             + "m.idMedico, m.idEspecialidad, m.numero_colegiatura, m.universidad, "
@@ -46,8 +52,10 @@ public class MedicoDAOImpl implements MedicoDAO {
             + "INNER JOIN Especialidades e ON m.idEspecialidad = e.idEspecialidad "
             + "WHERE m.estado_solicitud = 'ESPERA'";
     
+    // Actualizar estado de solicitud
     String ACTUALIZAR_ESTADO_SOLICITUD = "UPDATE Medicos SET estado_solicitud = ? WHERE idMedico = ?";
     
+    // Obtener medicos rechazados
     String OBTENER_MEDICOS_RECHAZADOS = "SELECT u.idUsuario, u.nombre, u.edad, u.email, u.password, u.tipoUsuario, "
             + "u.fechaNacimiento, u.telefono, u.direccion, u.sexo, "
             + "m.idMedico, m.idEspecialidad, m.numero_colegiatura, m.universidad, "

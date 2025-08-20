@@ -26,10 +26,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GestionMedicos extends javax.swing.JFrame {
     
+    
     private List<Usuario> listaUsuario = new ArrayList<>();
     DefaultTableModel mt = new DefaultTableModel();
     private Administrador administrador;
-    
     private List<Usuario> listaMedicos = new ArrayList<>();
 
     /**
@@ -374,6 +374,7 @@ public class GestionMedicos extends javax.swing.JFrame {
     private void tablaMedicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaMedicosMouseClicked
         // TODO add your handling code here:
 
+        //Metodo para seleccionar fila cuando se haga click en ella y que los datos de ese usuario aparezca en los textfields correspondientes
         int fila = tablaMedicos.getSelectedRow();
         if (fila >= 0) {
             Usuario m = listaMedicos.get(fila); //Tomar el Paciente desde la lista
@@ -465,7 +466,6 @@ public class GestionMedicos extends javax.swing.JFrame {
 
         String tipoTexto = tablaMedicos.getValueAt(tablaMedicos.getSelectedRow(), 2).toString().toUpperCase();
 
-        //        u.setTipoUsuario(Usuario.TipoUsuario.valueOf(tipoTexto));
         Usuario.TipoUsuario tipo1 = Usuario.TipoUsuario.fromStringSafe(tipoTexto);
 
         if (tipo == null) {
@@ -475,6 +475,7 @@ public class GestionMedicos extends javax.swing.JFrame {
 
         m.setTipoUsuario(tipo1);
 
+        // aqui se trae el metodo del DAO para poder hacer la actualizacion en la base de datos.
         UsuarioDAO dao = new UsuarioDAOimpl();
         if (dao.actualizar(m)) {
             JOptionPane.showMessageDialog(this, "Medico actualizado");
@@ -543,6 +544,7 @@ public class GestionMedicos extends javax.swing.JFrame {
 
     }
 
+    // Metodo para activar o desactivar los botones
     private void activiarBotonesEdicion(boolean estado) {
         btnEditar.setEnabled(estado);
         btnEliminar.setEnabled(estado);
@@ -550,6 +552,7 @@ public class GestionMedicos extends javax.swing.JFrame {
         btnCancelar.setEnabled(estado);
     }
 
+    // Metodo para habilitar o no los campos
     private void habilitarCampos(boolean estado) {
         txtNombre.setEnabled(estado);
         txtDireccion.setEnabled(estado);
@@ -558,6 +561,7 @@ public class GestionMedicos extends javax.swing.JFrame {
         txtid.setEnabled(estado);
     }
 
+    // Metodo para limpiar los campos 
     private void LimpiarCampos() {
         txtid.setText("");
         txtNombre.setText("");
@@ -567,6 +571,7 @@ public class GestionMedicos extends javax.swing.JFrame {
         txtNombre.requestFocus();
     }
     
+    // Metodo para contar los medicos
     private void contadorDeMedicos() {
         UsuarioDAO dao = new UsuarioDAOimpl();
         int totalMedicos = dao.contarMedicos();

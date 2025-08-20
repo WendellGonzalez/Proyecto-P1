@@ -133,6 +133,7 @@ public class VerHistorialMedico extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Metodo para cargar la tabla con datos de historial medico del paciente
     private void cargarTabla() {
         HistorialMedicoDAO historialDAO = new HistorialMedicoDAOImpl();
 

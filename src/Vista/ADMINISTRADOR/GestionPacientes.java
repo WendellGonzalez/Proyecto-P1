@@ -326,7 +326,6 @@ public class GestionPacientes extends javax.swing.JFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-
         LimpiarCampos();
         habilitarCampos(false);
         activiarBotonesEdicion(false);
@@ -500,6 +499,7 @@ public class GestionPacientes extends javax.swing.JFrame {
 
         jTabledatos.setModel(modelo);
 
+        // Aqui ocultamos la columna de id en la tabla para mostrarlo en el txtid
         try {
             jTabledatos.getColumnModel().getColumn(0).setMinWidth(0);
             jTabledatos.getColumnModel().getColumn(0).setMaxWidth(0);
@@ -509,7 +509,8 @@ public class GestionPacientes extends javax.swing.JFrame {
         }
 
     }
-
+    
+    // Metodo para activar o desactivar los botones
     private void activiarBotonesEdicion(boolean estado) {
         btnEditar.setEnabled(estado);
         btnEliminar.setEnabled(estado);
@@ -517,6 +518,7 @@ public class GestionPacientes extends javax.swing.JFrame {
         btnCancelar.setEnabled(estado);
     }
 
+    // Metodo para habilitar o no los campos    
     private void habilitarCampos(boolean estado) {
         txtNombrePaciente.setEnabled(estado);
         txtDireccionPaciente.setEnabled(estado);
@@ -525,6 +527,7 @@ public class GestionPacientes extends javax.swing.JFrame {
         txtid.setEnabled(estado);
     }
 
+    //< Metodo para limpiar los campos  
     private void LimpiarCampos() {
         txtid.setText("");
         txtNombrePaciente.setText("");
@@ -534,6 +537,7 @@ public class GestionPacientes extends javax.swing.JFrame {
         txtNombrePaciente.requestFocus();
     }
 
+    // Metodo para contar los pacientes, trae el total de la base de datos.
     private void contarPacientes() {
         UsuarioDAO dao = new UsuarioDAOimpl();
         int totalPacientes = dao.contarPacientes();

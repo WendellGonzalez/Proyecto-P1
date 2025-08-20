@@ -130,6 +130,7 @@ public class SolicitudesMedicasRechazadas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Metodo para mostrar los medicos con estado de solicitud 'RECHAZADA'
     private void cargarMedicosRechazadosEnTabla() {
         MedicoDAO medicoDAO = new MedicoDAOImpl();
         MedicosRechazados = medicoDAO.obtenerMedicosRechazados();

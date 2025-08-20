@@ -530,7 +530,8 @@ public class GestionUsuarios extends javax.swing.JFrame {
         }
 
     }
-
+    
+    // Metodo para activar o no los botones
     private void activiarBotonesEdicion(boolean estado) {
         btnEditar.setEnabled(estado);
         btnEliminar.setEnabled(estado);
@@ -538,6 +539,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
         btnCancelar.setEnabled(estado);
     }
 
+    // Metodo para habilitar o no los campos
     private void habilitarCampos(boolean estado) {
         txtNombreCompleto.setEnabled(estado);
         txtdireccion.setEnabled(estado);
@@ -546,6 +548,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
         txtid.setEnabled(estado);
     }
 
+    // Metodo para limpiar los campos
     private void LimpiarCampos() {
         txtid.setText("");
         txtNombreCompleto.setText("");

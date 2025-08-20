@@ -465,24 +465,28 @@ public class GestionHistorialPacientes extends javax.swing.JFrame {
         }
     }
 
+    //Metodo para activar o no los botones  
     private void activiarBotonesEdicion(boolean estado) {
         btnEditar.setEnabled(estado);
         btnActualizar.setEnabled(estado);
         btnCancelar.setEnabled(estado);
     }
 
+    // Metodo para habilitar o no los campos
     private void habilitarCampos(boolean estado) {
         txtTipoSangre.setEnabled(estado);
         txtAlergias.setEnabled(estado);
         txtEnfermedadesCronicas.setEnabled(estado);
     }
 
+    // Metodo para limpiar los campos   
     private void LimpiarCampos() {
         txtTipoSangre.setText("");
         txtAlergias.setText("");
         txtEnfermedadesCronicas.setText("");
     }
 
+    // Metodo para contar los pacientes
     private void contarPacientes() {
         UsuarioDAO dao = new UsuarioDAOimpl();
         int totalPacientes = dao.contarPacientesPorMedico(this.medicoLogueado.getIdMedico());

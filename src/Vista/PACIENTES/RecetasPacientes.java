@@ -132,6 +132,7 @@ public class RecetasPacientes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Metodo para cargar la tabla con las recetas que cada doctor le ha hecho, con todos sus datos necesarios.
     private void cargarTabla() {
         RecetaDAO recetaDAO = new RecetaDAOImpl();
         DefaultTableModel modelo = new DefaultTableModel() {

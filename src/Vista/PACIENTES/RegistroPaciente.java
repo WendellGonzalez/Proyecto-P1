@@ -300,16 +300,12 @@ public class RegistroPaciente extends javax.swing.JFrame {
 
     /**
      * @Metodos
-     */
-    // 
+     * RegistrogeneralPaciente
+     */ 
+ 
+    //Metodo para obtener los datos que se estan poniendo en los text fields y registrarlos en la base de datos
     public void registroGeneralPaciente() {
-        try {
-
-//        if (paciente == null || paciente.getIdUsuario() <= 0) {
-//            JOptionPane.showMessageDialog(this, "Error: El usuario no ha sido registrado correctamente.", "Error", JOptionPane.ERROR_MESSAGE);
-//            return; 
-//        }
-            
+        try {     
 
             HistorialMedico historial = new HistorialMedico();
             historial.setTipoSangre(txtTipoSangre.getText().trim());
@@ -332,6 +328,7 @@ public class RegistroPaciente extends javax.swing.JFrame {
         }
     }
     
+    // MEtodo para llamar el dao y guardar todos los datos ingresados
     private void guardarPacienteCompleto() {
             PacienteDAO dao = new PacienteDAOImpl();
             boolean exito = dao.registrar(paciente);
@@ -345,8 +342,7 @@ public class RegistroPaciente extends javax.swing.JFrame {
             }
     }
     
- 
-    
+    // Metodo para limpiar los campos    
     public void limpiarCampos() {
         txtTipoSangre.setText("");
         txtAlergias.setText("");

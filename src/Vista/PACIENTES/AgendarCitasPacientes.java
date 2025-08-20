@@ -377,6 +377,7 @@ public class AgendarCitasPacientes extends javax.swing.JFrame {
         realizarCita();
     }//GEN-LAST:event_btnRealizarCitaActionPerformed
 
+    // Metodo para realizar citas
     private void realizarCita() {
         int fila = tablaMedicos.getSelectedRow();
         if (fila == -1) {
@@ -419,6 +420,7 @@ public class AgendarCitasPacientes extends javax.swing.JFrame {
                 .atZone(ZoneId.systemDefault())
                 .toLocalDate();
 
+        // Crear el objeto cita para setearle los datos 
         Cita cita = new Cita();
         cita.setIdPaciente(idPaciente);
         cita.setIdMedico(idMedico);
@@ -464,6 +466,7 @@ public class AgendarCitasPacientes extends javax.swing.JFrame {
         }
     }
     
+    // Metodo para cargar medicos por especialidad
     private void cargarMedicosPorEspecialidad(int idEspecialidad) {
         DefaultTableModel model = new DefaultTableModel() {
             @Override

@@ -56,11 +56,15 @@ public class UsuarioDAOimpl implements UsuarioDAO {
             + "WHERE m.estado_solicitud != 'RECHAZADO' "
             + "   OR m.estado_solicitud IS NULL;";
 
+    // Query para traer el total de medicos que estan aceptados por el administrador
     String CONTAR_MEDICOS = "SELECT COUNT(*) FROM usuarios u "
             + "Join medicos m on m.idMedico = u.idUsuario "
             + " WHERE tipoUsuario = 'MEDICO' and estado_solicitud = 'ACEPTADO';";
 
+    // Query para traer todos los pacientes
     String CONTAR_PACIENTES = "SELECT COUNT(*) FROM usuarios WHERE tipoUsuario = 'PACIENTE';";
+    
+    // Query para contar cuantos pacientes han solicitado alguna vez cita con un medico especifico (esto le aparece al medico).
     String CONTAR_PACIENTESPORMEDICO = "SELECT COUNT(DISTINCT idPaciente) FROM Citas where idMedico = ?";
 
     // EMAIL EXISTE

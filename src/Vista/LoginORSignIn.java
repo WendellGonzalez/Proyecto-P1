@@ -5,7 +5,6 @@
 package Vista;
 import javax.swing.*;
 import javax.swing.JMenuItem;
-import Vista.InformacionClinica;
 
 /**
  *

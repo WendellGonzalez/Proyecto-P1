@@ -20,6 +20,8 @@ public class RecetaDAOImpl implements RecetaDAO{
     /**
      * @Consultas
      */
+    
+    // Query para obtener las recetas por paciente, y tambien datos del medico que le puso la receta
         String sqlObtenerRecetasPorPaciente = "SELECT r.id_receta, r.medicamento, r.dosis, r.frecuencia, r.duracion, " +
                      "u.nombre AS nombre_medico, e.nombre, c.fechaConsulta AS fecha " +
                      "FROM Receta r " +
@@ -29,6 +31,7 @@ public class RecetaDAOImpl implements RecetaDAO{
                      "INNER JOIN Usuarios u ON m.idMedico = u.idUsuario " +
                      "WHERE c.idPaciente = ?";
         
+        // Queryu para obtener el historial por paciente, tambien trayendo datos del medico 
         String sqlObtenerHistorialPorPaciente = "SELECT r.id_receta, r.medicamento, r.dosis, r.frecuencia, r.duracion, " +
                      "u.nombre AS nombre_medico, c.fechaConsulta AS fecha, c.diagnostico, c.recomendaciones " +
                      "FROM Receta r " +

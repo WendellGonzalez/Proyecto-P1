@@ -44,7 +44,7 @@ public class CitasSolicitadas extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaCitas = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -53,7 +53,7 @@ public class CitasSolicitadas extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "MIS CITAS", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Helvetica Neue", 1, 24), new java.awt.Color(0, 102, 102))); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaCitas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -64,7 +64,7 @@ public class CitasSolicitadas extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaCitas);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -128,6 +128,8 @@ public class CitasSolicitadas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // Metodo para cargar la tabla con las citas que ya ha solicitado el paciente. 
+    // Esto es como cierto tipo de manejo de notificaciones, donde el paciente ve si el doctor rechazo o canceló la cita.
     private void cargarTabla() {
         CitaDAO citaDAO = new CitaDAOImpl();
         DefaultTableModel modelo = new DefaultTableModel() {
@@ -154,7 +156,7 @@ public class CitasSolicitadas extends javax.swing.JFrame {
         });
     }
 
-    jTable1.setModel(modelo);
+    tablaCitas.setModel(modelo);
     }
 
 
@@ -163,6 +165,6 @@ public class CitasSolicitadas extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaCitas;
     // End of variables declaration//GEN-END:variables
 }

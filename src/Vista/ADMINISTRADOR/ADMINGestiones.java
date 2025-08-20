@@ -211,6 +211,9 @@ public class ADMINGestiones extends javax.swing.JFrame {
 
     private void btnGestionEspecialidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionEspecialidadesActionPerformed
         // TODO add your handling code here:
+        
+        // Aqui se evalua si el usuario admin fue traido del login, si fue traido entonces puede entrar al modulo correspondiente
+        
         if(administrador != null) {
         new GestionEspecialidades(this.administrador).setVisible(true);
         this.dispose();
@@ -221,6 +224,8 @@ public class ADMINGestiones extends javax.swing.JFrame {
 
     private void btnGestionUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionUsuariosActionPerformed
         // TODO add your handling code here:
+        
+        // Aqui se evalua si el usuario admin fue traido del login, si fue traido entonces puede entrar al modulo correspondiente
         if(administrador != null) {
         new AdminRol(this.administrador).setVisible(true);
         this.dispose();
@@ -231,6 +236,8 @@ public class ADMINGestiones extends javax.swing.JFrame {
 
     private void btnGestionSolicitudesMedicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionSolicitudesMedicasActionPerformed
         // TODO add your handling code here:
+        
+        // Aqui se evalua si el usuario admin fue traido del login, si fue traido entonces puede entrar al modulo correspondiente
         if(administrador != null) {
             new GestionSolicitudesMedicas(this.administrador).setVisible(true);
             this.dispose();
@@ -241,6 +248,8 @@ public class ADMINGestiones extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        // Aqui se evalua si el usuario admin fue traido del login, si fue traido entonces puede entrar al modulo correspondiente
         if(administrador != null) {
             new SolicitudesMedicasRechazadas(this.administrador).setVisible(true);
             this.dispose();
@@ -251,6 +260,8 @@ public class ADMINGestiones extends javax.swing.JFrame {
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         // TODO add your handling code here:
+        
+        // Aqui se evalua si el usuario admin fue traido del login, si fue traido entonces puede entrar al modulo correspondiente
         if (administrador != null) {
             //            int idUsuario = this.medicoActual.getIdUsuario();
             new EdicionDatosPersonales(this.administrador).setVisible(true);

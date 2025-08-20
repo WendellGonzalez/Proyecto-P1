@@ -27,7 +27,10 @@ public class ConsultaDAOImpl implements ConsultaDAO{
      */
     
 
+    // Insertar la consulta realizada en la base de datos
     String sqlConsulta = "INSERT INTO Consulta (idCita, idPaciente, idMedico, diagnostico, recomendaciones, fechaConsulta) VALUES (?, ?, ?, ?, ?, ?)";
+   
+    // Insertar la receta en la base de datos
     String sqlReceta = "INSERT INTO Receta (id_consulta, medicamento, dosis, frecuencia, duracion) VALUES (?, ?, ?, ?, ?)";
     
     // obtener consulta por cita
@@ -39,64 +42,8 @@ public class ConsultaDAOImpl implements ConsultaDAO{
     //Obtener recetas por consulta
     String OBTENER_RECETAS_POR_CONSULTA = "SELECT * FROM Receta WHERE id_consulta = ?";
     
-    
-//
-//    @Override
-//    public boolean insertarConsultaConRecetas(ConsultaMedica consulta, List<Receta> recetas) {
-//        int idConsulta = -1;
-//
-//        try (Connection conn = DBconnection.obtenerConexion();PreparedStatement psConsulta = conn.prepareStatement(sqlConsulta, Statement.RETURN_GENERATED_KEYS)) {
-//            psConsulta.setInt(1, consulta.getIdCita());
-//            psConsulta.setInt(2, consulta.getIdPaciente());
-//            psConsulta.setInt(3, consulta.getIdMedico());
-//            psConsulta.setString(4, consulta.getDiagnostico());
-//            psConsulta.setString(5, consulta.getRecomendaciones());
-//            psConsulta.setTimestamp(6, Timestamp.valueOf(LocalDateTime.now()));
-//            
-//            int affectedRows = psConsulta.executeUpdate();
-//            if (affectedRows == 0) {
-//                System.err.println("Falló la inserción de la consulta, no se afectaron filas.");
-//                return false;
-//            }
-//
-//            try (ResultSet generatedKeys = psConsulta.getGeneratedKeys()) {
-//                if (generatedKeys.next()) {
-//                    idConsulta = generatedKeys.getInt(1);
-//                } else {
-//                    System.err.println("Falló la obtención del ID de la consulta.");
-//                    return false;
-//                }
-//            }
-//        } catch (SQLException e) {
-//            System.err.println("Error al insertar la consulta: " + e.getMessage());
-//            return false;
-//        }
-//
-//        if (idConsulta != -1) {
-//            try (Connection conn = DBconnection.obtenerConexion();PreparedStatement psReceta = conn.prepareStatement(sqlReceta)) {
-//                for (Receta receta : recetas) {
-//                    psReceta.setInt(1, idConsulta);
-//                    psReceta.setString(2, receta.getMedicamento());
-//                    psReceta.setString(3, receta.getDosis());
-//                    psReceta.setString(4, receta.getFrecuencia());
-//                    psReceta.setString(5, receta.getDuracion());
-//                    psReceta.addBatch(); 
-//                }
-//                psReceta.executeBatch(); 
-//                return true;
-//            } catch (SQLException e) {
-//                System.err.println("Error al insertar una o más recetas. La consulta ya ha sido guardada: " + e.getMessage());
-//                return false;
-//            }
-//        }
-//        return false;
-//    }
-    
-    
     @Override
     public boolean registrarConsulta(ConsultaMedica consulta) {
-        String sqlConsulta = "INSERT INTO Consulta (idCita, idPaciente, idMedico, diagnostico, recomendaciones, fechaConsulta) VALUES (?, ?, ?, ?, ?, ?)";
-        String sqlReceta = "INSERT INTO Receta (id_consulta, medicamento, dosis, frecuencia, duracion) VALUES (?, ?, ?, ?, ?)";
         
         try {
             

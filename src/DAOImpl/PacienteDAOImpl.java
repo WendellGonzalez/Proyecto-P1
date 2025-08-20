@@ -18,17 +18,25 @@ import SQLConnection.DBconnection;
  */
 public class PacienteDAOImpl implements PacienteDAO {
 
+    // Registrar paciente
     String REGISTRO_PACIENTE = "INSERT INTO pacientes (idPaciente, seguro_medico, numero_seguro, contacto_emergencia, relacion_contacto, telefono_contacto) VALUES (?, ?, ?, ?, ?, ?)";
+    
+    // Registro de historial del paciente 
     String REGISTRO_HISTORIAL_PACIENTE = "INSERT INTO historialMedico (idPaciente, tipo_sangre, alergias, enfermedades_cronicas) VALUES (?,?,?,?)";
 
+    // Query para traer el historial por paciente
     String HISTORIAL_POR_PACIENTE = "SELECT * FROM historialMedico WHERE idPaciente = ?";
 
+    // Actualizar paciente
     String UPDATE_PACIENTE = "UPDATE usuarios SET nombre = ?, direccion = ?, email = ?, telefono = ? WHERE tipoUsuario = 'PACIENTE';";
 
+    // Eliminar paciente
     String ELIMINAR_PACIENTE = "DELETE FROM pacientes WHERE idPaciente = ?";
 
+    // Query para traer la lista de pacientes (sin filtro)
     String LISTAR_PACIENTES = "SELECT * FROM pacientes";
     
+    // trae los pacientes por medico
     String PACIENTES_POR_MEDICO = "SELECT u.idUsuario, u.nombre, u.telefono, u.edad, "
             + "p.seguro_medico, p.numero_seguro "
             + "FROM usuarios u "

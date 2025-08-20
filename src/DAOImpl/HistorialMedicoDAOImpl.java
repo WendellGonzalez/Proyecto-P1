@@ -19,12 +19,16 @@ import java.util.List;
  */
 public class HistorialMedicoDAOImpl implements HistorialMedicoDAO {
 
+    // Query para traer historial medico por paciente
     String sqlHistorial = "SELECT * FROM HistorialMedico WHERE idPaciente = ?";
 
+    // Registrar historial 
     String REGISTRO_HISTORIAL = "INSERT INTO historialMedico (idPaciente, tipo_sangre, alergias, enfermedades_cronicas) VALUES (?, ?, ?, ?)";
 
+    // Actualizar historial
     String ACTUALIZAR_HISTORIAL = "UPDATE historialMedico SET tipo_sangre = ?, alergias = ?, enfermedades_cronicas = ? WHERE idHistorial = ?";
 
+    // Eliminar HIstorial
     String ELIMINAR_HISTORIAL = "DELETE FROM historialMedico WHERE idHistorial = ?";
 
     @Override

@@ -23,8 +23,10 @@ import java.time.format.DateTimeFormatter;
  */
 public class HorarioDAOImpl implements HorarioDAO {
 
+    // Insertar horarios 
     String INSERTAR_HORARIO = "INSERT INTO horarios_medico (idMedico, dia_semana, hora_inicio, hora_fin) VALUES (?,?,?,?)";
 
+    // query para obtener horarios por medico y por dia de semana
     String OBTENER_HORARIO_POR_DIA = "SELECT * FROM horarios_medico WHERE idMedico = ? AND dia_semana = ?";
 
     private CitaDAO citaDAO = new CitaDAOImpl();
@@ -60,6 +62,7 @@ public class HorarioDAOImpl implements HorarioDAO {
         return null;
     }
 
+    // MEtodo para la obtencion de horas disponibles (aqui no hay query ni insert ni nada de eso, solo es un metodo para usarlo en otro metodo).
     @Override
     public List<String> obtenerHorasDisponibles(int idMedico, LocalDate fecha) {
         List<String> horasDisponibles = new ArrayList<>();
@@ -94,6 +97,7 @@ public class HorarioDAOImpl implements HorarioDAO {
         return horasDisponibles;
     }
 
+    // Metodo para insertar horario
     @Override
     public boolean insertarHorario(Horario horario) {
         if (horario.getHora_inicio() == null || horario.getHora_fin() == null) {
@@ -118,6 +122,7 @@ public class HorarioDAOImpl implements HorarioDAO {
 
     }
 
+    // Metodo para crear un horario por defecto inmediatamente un medico entra a la empresa
     @Override
     public boolean insertarHorarioDefecto(int idMedico) {
         LocalTime horaInicio = LocalTime.of(8, 0);

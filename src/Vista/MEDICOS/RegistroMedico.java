@@ -282,6 +282,7 @@ public class RegistroMedico extends javax.swing.JFrame {
      * @Metodos
      */
     
+    // Metodo para cargar las especialidades disponibles en el comboBox
     private void cargarEspecialidadesEnCombo() {
         DefaultComboBoxModel<String> comboModel = new DefaultComboBoxModel<>();
         comboModel.addElement("SELECCIONA");
@@ -297,6 +298,7 @@ public class RegistroMedico extends javax.swing.JFrame {
         comboEspecialidad.setModel(comboModel);
     }
     
+    // Metodo para registro de los datos que se le estan pidiendo al medico ahora
     public void registroGeneralMedicos() {
 
         try {
@@ -375,11 +377,9 @@ public class RegistroMedico extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Error al enviar solicitud", "Error", JOptionPane.ERROR_MESSAGE);
         }
-    }
-   
-
-
+    }   
     
+    // MEtodo para limpiar los campos
     public void limpiarCampos() {
         txtAniosExperiencia.setText("");
         txtFechaGraduacion.setText("");

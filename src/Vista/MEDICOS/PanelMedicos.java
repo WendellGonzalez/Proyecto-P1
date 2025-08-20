@@ -4,9 +4,7 @@
  */
 package Vista.MEDICOS;
 
-import Model.Cita;
 import Model.Medico;
-import Vista.ADMINISTRADOR.ADMINGestiones;
 import Vista.LOGIN;
 import Vista.LoginORSignIn;
 import javax.swing.JMenuItem;
@@ -220,7 +218,6 @@ public class PanelMedicos extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if (medicoActual != null) {
-//            int idUsuario = this.medicoActual.getIdUsuario();
             new GestionHistorialPacientes(this.medicoActual).setVisible(true);
             this.dispose();
         } else {
@@ -231,7 +228,6 @@ public class PanelMedicos extends javax.swing.JFrame {
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
         if (medicoActual != null) {
-//            int idUsuario = this.medicoActual.getIdUsuario();
             new EdicionDatosPersonales(this.medicoActual).setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, "Error: No se encontró la información del médico. Intente iniciar sesión nuevamente.", "Error", JOptionPane.ERROR_MESSAGE);

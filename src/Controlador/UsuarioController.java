@@ -11,6 +11,8 @@ import Model.*;
  * @author wendellgonzalez
  */
 public class UsuarioController {
+    
+    // Este es el controlador de usuario para conectar el modelo con la vista.
     private final UsuarioDAOimpl usuarioDAO;
     
     public UsuarioController() {
@@ -20,6 +22,4 @@ public class UsuarioController {
     public Usuario login(String email, String password) {
         return usuarioDAO.autenticar(email, password);
     }
-    
-    
 }
